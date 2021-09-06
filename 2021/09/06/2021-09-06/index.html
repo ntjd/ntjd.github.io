@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ntjd.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="安装kali linux后的准备操作kali linux使用前的准备操作，包括基础使用提示，换源，中文、日文输入法配置，vim内外复制粘贴，python pip安装，docker安装，蚁剑安装，burpsuit换专业版等，部分待补充">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装kali linux后的准备操作">
+<meta property="og:url" content="http://ntjd.github.io/2021/09/06/2021-09-06/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装kali linux后的准备操作kali linux使用前的准备操作，包括基础使用提示，换源，中文、日文输入法配置，vim内外复制粘贴，python pip安装，docker安装，蚁剑安装，burpsuit换专业版等，部分待补充">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-09-06T15:54:33.000Z">
+<meta property="article:modified_time" content="2021-09-06T17:39:37.369Z">
+<meta property="article:author" content="Kevin Cai">
+<meta property="article:tag" content="kali linux">
+<meta property="article:tag" content="security">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://ntjd.github.io/2021/09/06/2021-09-06/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>安装kali linux后的准备操作 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://ntjd.github.io/2021/09/06/2021-09-06/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin Cai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安装kali linux后的准备操作
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-09-06 11:54:33 / Modified: 13:39:37" itemprop="dateCreated datePublished" datetime="2021-09-06T11:54:33-04:00">2021-09-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/security/" itemprop="url" rel="index"><span itemprop="name">security</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/security/kali-linux/" itemprop="url" rel="index"><span itemprop="name">kali linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="安装kali-linux后的准备操作"><a href="#安装kali-linux后的准备操作" class="headerlink" title="安装kali linux后的准备操作"></a>安装kali linux后的准备操作</h1><p>kali linux使用前的准备操作，包括基础使用提示，换源，中文、日文输入法配置，vim内外复制粘贴，python pip安装，docker安装，蚁剑安装，burpsuit换专业版等，部分待补充</p>
+<span id="more"></span>
+
+<p>环境：</p>
+<ol>
+<li>VMware Workstation 16 pro version 16.0.0</li>
+<li>kali-linux-2021.1-vmware-amd64.zip镜像，来源：<a target="_blank" rel="noopener" href="https://www.kali.org/get-kali/#kali-virtual-machines">https://www.kali.org/get-kali/#kali-virtual-machines</a><br>镜像zip文件解压后用VMware打开即可使用。<br>kali安装可参考：<a target="_blank" rel="noopener" href="https://www.kali.org/docs/virtualization/install-vmware-guest-vm/">https://www.kali.org/docs/virtualization/install-vmware-guest-vm/</a></li>
+</ol>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="基础使用知识"><a href="#基础使用知识" class="headerlink" title="基础使用知识"></a>基础使用知识</h2><ol>
+<li>登录用户名和密码：kali 和 kali</li>
+<li>切换管理员：sudo su</li>
+<li>呼出终端快捷键： ctrl + alt + t</li>
+<li>终端中复制黏贴快捷键： ctrl + shift + c / v (多按一个shift) （参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/SleepBoyer/article/details/86429970">zsh 常用快捷键</a>）</li>
+<li>git克隆项目仓库：git clone + 链接地址</li>
+<li>终端下人性化详细列出当前目录下内容命令：ls -alh，或ll -ah, 或la -hl（注意：这里显示的文件夹大小不包括文件夹内的内容，所以一般只是4k大小。）</li>
+<li>终端查看文件夹第一级内容的磁盘占用：du  -ahd 1 ( 参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wanng/p/linux-du-command.html">Linux 下du命令详解</a>和<a target="_blank" rel="noopener" href="http://c.biancheng.net/linux/du.html">Linux du命令</a> )</li>
+<li>查看系统资源被进程占用的情况：top (进动态界面后按 h 查看帮助)</li>
+<li>查看系统中进程的信息：ps</li>
+<li>vim显示行号：” :set nu “ (其他vim操作参考<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-vim.html">Linux vi/vim | 菜鸟教程</a>)</li>
+<li>ssh远程连接：ssh -l 用户名 -p 端口 地址 或 ssh 用户名@地址 -p 端口（参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1594881">ssh 命令</a>）</li>
+<li>curl命令使用：curl -X POST -d ‘param1=hello&amp;param2=world’ URL（参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wuhuagu_wuhuaguo/article/details/90764856">Linux curl命令最全详解</a>）</li>
+<li>安装kali工具：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1035313">Kali Linux metapackages 工具包</a></li>
+</ol>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="软件更新换源"><a href="#软件更新换源" class="headerlink" title="软件更新换源"></a>软件更新换源</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/u-damowang1/p/14729017.html">Kali2021配置apt换源</a><br><a target="_blank" rel="noopener" href="http://smartadmin.com.cn/smartadmin/show-9979.html">Ubuntu更换阿里源以及由于没有公钥，无法验证下列签名错误</a></p>
+<p>添加源，终端输入：<br>sudo vim /etc/apt/sources.list</p>
+<p>注释掉自带源，下列源选择部分添加：</p>
+<blockquote>
+<p># 官方源<br># deb <a target="_blank" rel="noopener" href="http://http.kali.org/kali">http://http.kali.org/kali</a> kali-rolling main non-free contrib<br># deb-src <a target="_blank" rel="noopener" href="http://http.kali.org/kali">http://http.kali.org/kali</a> kali-rolling main non-free contrib<br># 中科大源<br>deb <a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/kali">http://mirrors.ustc.edu.cn/kali</a> kali-rolling main non-free contrib<br>deb-src <a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/kali">http://mirrors.ustc.edu.cn/kali</a> kali-rolling main non-free contrib<br># 阿里云源<br>deb <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/kali">http://mirrors.aliyun.com/kali</a> kali-rolling main non-free contrib<br>deb-src <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/kali">http://mirrors.aliyun.com/kali</a> kali-rolling main non-free contrib<br># 清华大学源<br># deb <a target="_blank" rel="noopener" href="http://mirrors.tuna.tsinghua.edu.cn/kali">http://mirrors.tuna.tsinghua.edu.cn/kali</a> kali-rolling main contrib non-free<br># deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/kali">https://mirrors.tuna.tsinghua.edu.cn/kali</a> kali-rolling main contrib non-free<br># 浙大源<br># deb <a target="_blank" rel="noopener" href="http://mirrors.zju.edu.cn/kali">http://mirrors.zju.edu.cn/kali</a> kali-rolling main contrib non-free<br># deb-src <a target="_blank" rel="noopener" href="http://mirrors.zju.edu.cn/kali">http://mirrors.zju.edu.cn/kali</a> kali-rolling main contrib non-free<br># 东软大学源<br># deb <a target="_blank" rel="noopener" href="http://mirrors.neusoft.edu.cn/kali">http://mirrors.neusoft.edu.cn/kali</a> kali-rolling/main non-free contrib<br># deb-src <a target="_blank" rel="noopener" href="http://mirrors.neusoft.edu.cn/kali">http://mirrors.neusoft.edu.cn/kali</a> kali-rolling/main non-free contrib<br># 新加坡kali源<br># deb <a target="_blank" rel="noopener" href="http://mirror.nus.edu.sg/kali/kali/">http://mirror.nus.edu.sg/kali/kali/</a> kali main non-free contrib<br># deb-src <a target="_blank" rel="noopener" href="http://mirror.nus.edu.sg/kali/kali/">http://mirror.nus.edu.sg/kali/kali/</a> kali main non-free contrib<br># 163 Kali源<br># deb <a target="_blank" rel="noopener" href="http://mirrors.163.com/debian">http://mirrors.163.com/debian</a> wheezy main non-free contrib<br># deb-src <a target="_blank" rel="noopener" href="http://mirrors.163.com/debian">http://mirrors.163.com/debian</a> wheezy main non-free contrib</p>
+</blockquote>
+<p>如果使用源没有获取公钥认证，apt-get update可能报错，安装docker等时可能出现网络问题，如:</p>
+<blockquote>
+<p>E: The repository ‘<a target="_blank" rel="noopener" href="https://download.docker.com/linux/debian">https://download.docker.com/linux/debian</a> kali-rolling Release’ does not have a Release file.<br>N: Updating from such a repository can’t be done securely, and is therefore disabled by default.<br>N: See apt-secure(8) manpage for repository creation and user configuration details.</p>
+</blockquote>
+<blockquote>
+<p>The repository ‘<a target="_blank" rel="noopener" href="https://download.docker.com/linux/debian">https://download.docker.com/linux/debian</a> kali-rolling Release’ does not have a Release file.</p>
+</blockquote>
+<p>可以参考<a target="_blank" rel="noopener" href="http://smartadmin.com.cn/smartadmin/show-9979.html">Ubuntu更换阿里源以及由于没有公钥，无法验证下列签名错误</a>进行签名操作，虽然这样只能解决部分问题。</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="中文输入法"><a href="#中文输入法" class="headerlink" title="中文输入法"></a>中文输入法</h2><p>参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1196809">https://cloud.tencent.com/developer/article/1196809</a></p>
+<p>终端输入<br>sudo apt-get install ibus ibus-pinyin</p>
+<p>安装完后右上角出现en图标，即是ibus，右键preference，input method里add，Chinese，选择Pinyin输入法，另一个是台湾的注音输入法。添加后重启(reboot或init 6)，使用 ctrl + space(空格) 切换输入法即可</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="日文输入法"><a href="#日文输入法" class="headerlink" title="日文输入法"></a>日文输入法</h2><p>参考：<a target="_blank" rel="noopener" href="https://cocolofun.co.jp/linux-upgrade/">https://cocolofun.co.jp/linux-upgrade/</a></p>
+<p>终端输入：<br>sudo apt-get install ibus ibus-anthy</p>
+<p>类似于安装中文输入法：安装完后右上角出现en图标，即是ibus，右键preference，input method里add，Japanese，选择Anthy输入法。添加后重启(reboot或init 6)，使用 ctrl + space(空格) 切换输入法即可。</p>
+<p>打字时先输入读音，然后按空格，就会出现候选字。</p>
+<p>若要切换平假名、片假名，需要另外设置：<br>同样ibus，右键preference，input method里选择Japanese - Anthy，然后点击右边的preference，Key Binding里 hiragana_mode 即是平假名，双击，然后点一个三个点的按钮，输完快捷键后记得点add，这里可以设置快捷键为ctrl + caps；katakana_mode 即是片假名，设置快捷键为alt + caps。<br>之后便可使用快捷键切换平片假名。</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="vim-的剪贴板与系统互通"><a href="#vim-的剪贴板与系统互通" class="headerlink" title="vim 的剪贴板与系统互通"></a>vim 的剪贴板与系统互通</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19863631/answer/1821367137">将 Vim 剪贴板里面的东西粘贴到 Vim 之外的地方</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/gmpy/p/11177719.html">vim与系统剪切板之间的复制粘贴</a></p>
+<p>发现一个较简便的办法，可以直接复制较少的内容：</p>
+<ul>
+<li>将vim里内容复制到外头：</li>
+</ul>
+<p><strong>在vim里按住ctrl + shift不放, 然后移动鼠标选取, 之后正常的复制粘贴即可，单按shift也行</strong></p>
+<ul>
+<li>如果要将外部内容复制到vim里，和正常一样，输入模式按ctrl + shift + v即可。</li>
+</ul>
+<p>麻烦的办法：<br>vim打开文件后不能将其中内容复制复制到vim编辑器外，需要安装vim-gtk或vim-gnome，增加一个关联系统剪切板的 “ + 寄存器 ” ，保存在这个寄存器中的内容可以被系统其他程序访问，也可以通过这个寄存器访问其他程序保存到剪切板中的内容。</p>
+<p>安装输入：<br>sudo apt-get install vim-gtk 或 vim-gnome</p>
+<p>如果要从vim复制到系统剪切版，vim中按v进入可视化模式，然后输入双引号、加号、y，也可使用其他命令快捷复制多行等：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;+y</span><br></pre></td></tr></table></figure>
+<p>如果要从外部文件(系统剪切版)粘帖到vim，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;+p</span><br></pre></td></tr></table></figure>
+
+<p>注：查看 vim 是否已经支持 clipboard 剪贴板与系统互通功能<br>终端输入： vim –version | grep clipboard<br>如果有 +clipboard 则支持，如果显示的是 -clipboard 说明不支持。</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="python-pip安装"><a href="#python-pip安装" class="headerlink" title="python pip安装"></a>python pip安装</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiao_yi_xiao/article/details/118346810">kali linux2021 安装pip</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40614261/article/details/90023807">site-packages 和 dist-packages的区别，不同用户装第三方库的路径</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/33546077">什么是 .bashrc</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36148847/article/details/79261067">linux 解决 “ command not found: shopt “的 “~/.bashrc” 配置问题</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/python-pip-install-usage.html">pip 安装与使用</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/taoerchun/article/details/52213822">export命令详解</a></p>
+<p>kali 自带 python2 和 python3，但是不能直接使用pip来安装库，是否自带pip有待商榷。何况还需要pip2和pip3来分别下载python2、3的库</p>
+<ol>
+<li>安装python3对应的pip3：</li>
+</ol>
+<ul>
+<li><p><strong>方法一</strong>：<br>终端输入：sudo apt-get install python3-pip<br>安装后终端直接输入：pip 或 pip3 即可使用<br>注意，已经安装pip2的要输入pip3 -V 查看版本验证，似乎有人安装后仍是pip2，pip3没有被真正安装。如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# pip3 -V</span><br><span class="line">pip 19.3.1 from /usr/local/lib/python2.7/dist-packages/pip-19.3.1-py2.7.egg/pip (python 2.7)</span><br></pre></td></tr></table></figure>
+<p>正常情况可能是这样：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line">└─$ pip3 -V</span><br><span class="line">pip 21.2.4 from /home/kali/.local/lib/python3.9/site-packages/pip (python 3.9)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/kali]</span><br><span class="line">└─# pip3 -V</span><br><span class="line">pip 20.3.4 from /usr/lib/python3/dist-packages/pip (python 3.9)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>方法二</strong>，此方法需解决环境变量问题<br>终端输入：<br>curl -s <a target="_blank" rel="noopener" href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a> | python3<br>安装完不能直接在终端输入pip来使用，但是可以在 ~/.local/bin 中找到pip，并可在此目录下输入 ./pip 或 ./pip3 来使用。</p>
+<ul>
+<li>注：方法二不能任意路径输入使用，安装完库时有提示：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WARNING: The script 你所安装的库等 is installed in &#x27;/home/你的用户名/.local/bin&#x27; which is not on PATH.</span><br><span class="line">Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</span><br></pre></td></tr></table></figure>
+认为是环境变量配置的问题，于是设置pip所在的文件夹到环境变量里：<br>打开 <del>/.bashrc 文件（一种开机自动执行的文件）<br>增加下面一行到文件末尾：<br>export PATH=”/home/自己的username/.local/bin:$PATH”<br>然后输入source \</del>/.bashrc立刻执行，但是执行时乱码报错，发现可能是bash和zsh区别的问题。</li>
+</ul>
+</li>
+</ul>
+<p>于是打开~/.zshrc，同样增加下面一行到文件末尾：<br>export PATH=”/home/自己的username/.local/bin:$PATH”<br>然后重新开一个终端让.zshrc文件执行，此时输入export或echo $PATH查看环境变量，发现确实加入了pip所在文件夹的路径，可以直接输入pip使用了。</p>
+<ol start="2">
+<li><p>安装python2对应的pip：<br>作者未尝试，可参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiao_yi_xiao/article/details/118346810">kali linux2021 安装pip</a>安装</p>
+</li>
+<li><p>pip下载库的速度过慢可以换源，参考<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/python-pip-install-usage.html">pip换源</a></p>
+</li>
+<li><p>不同用户安装第三方库的安装路径不同，参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40614261/article/details/90023807">dist-packages与site-packages</a></p>
+</li>
+</ol>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="docker简介和安装"><a href="#docker简介和安装" class="headerlink" title="docker简介和安装"></a>docker简介和安装</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41282397/article/details/82879246">Dockerfile 与 docker-compose介绍</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_35282085/article/details/116812485">docker名词解释</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30596023/article/details/101244965">史上最全Docker环境安装指南</a><br><a target="_blank" rel="noopener" href="http://get.daocloud.io/#install-docker">通过 daocloud 在 Linux上 安装 Docker </a><br><a target="_blank" rel="noopener" href="https://www.kali.org/docs/containers/installing-docker-on-kali/">kali官网docker文档</a><br><a target="_blank" rel="noopener" href="https://docker_practice.gitee.io/">Docker — 从入门到实践</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bingogo/p/11964802.html">kali安装docker、配置阿里云镜像加速、docker使用</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/liu_runsheng/article/details/104740099">KALI linux 2020.1a安装docker过程记录</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lijingrong/p/13396884.html">使用清华镜像</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1589933">使用清华镜像2</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/pushiqiang/article/details/78682323#t0">docker-compose安装，使用, 快速入门</a><br><a target="_blank" rel="noopener" href="https://github.com/CTFTraining/CTFTraining">ctf 靶场安装</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/daner1257/p/10197801.html">docker配置仓库时出错</a><br><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">curl使用</a></p>
+<h3 id="名词解释："><a href="#名词解释：" class="headerlink" title="名词解释："></a>名词解释：</h3><ol>
+<li>image：镜像，是指将应用打包之后的存储方式，一个image包含多层layer，每一步的结果产出变成文件</li>
+<li>container：容器，指image在运行时，包含了文件资源(image展开)和系统资源(系统中的process)</li>
+<li>Dockerfile：一种构造image的文件的DSL</li>
+<li>docker CE ( Community Edition)是社区版。</li>
+<li>Docker Compose用来定义和运行复杂应用的Docker工具，不再需要使用shell脚本来启动容器，因为 一个使用Docker容器的应用，通常由多个容器组成。</li>
+</ol>
+<h3 id="安装docker步骤："><a href="#安装docker步骤：" class="headerlink" title="安装docker步骤："></a>安装docker步骤：</h3><ul>
+<li>注：</li>
+</ul>
+<ol>
+<li>若已经安装docker，需先卸载它们</li>
+<li>博客此部分尚未解决一些问题，建议先看别人的。</li>
+</ol>
+<ul>
+<li><strong>方法一</strong>：官网快捷安装<br>终端输入：<br>curl -s <a target="_blank" rel="noopener" href="https://get.docker.com/">https://get.docker.com/</a> | sh<br>似乎需要科学上网，我这里输入半天无反应。</li>
+<li><strong>方法二</strong>：通过daocloud安装，失败<br>终端输入<br>curl -sSL <a target="_blank" rel="noopener" href="https://get.daocloud.io/docker">https://get.daocloud.io/docker</a> | sh<br>第一次安装失败，返回：<blockquote>
+<p>E: The repository ‘<a target="_blank" rel="noopener" href="https://download.docker.com/linux/debian">https://download.docker.com/linux/debian</a> kali-rolling Release’ does not have a Release file.</p>
+</blockquote>
+</li>
+</ul>
+<p>查看自己换的源，输入apt-get update，发现其中报了：</p>
+<blockquote>
+<p>E: The repository ‘<a target="_blank" rel="noopener" href="https://download.docker.com/linux/debian">https://download.docker.com/linux/debian</a> kali-rolling Release’ does not have a Release file.<br>N: Updating from such a repository can’t be done securely, and is therefore disabled by default.<br>N: See apt-secure(8) manpage for repository creation and user configuration details. </p>
+</blockquote>
+<p>似乎是要添加验证公钥才能使用这个仓库，问题仍未解决，待高人指点。</p>
+<ul>
+<li>方法三，参考<a target="_blank" rel="noopener" href="https://www.kali.org/docs/containers/installing-docker-on-kali/">kali官网文档</a><ul>
+<li>终端输入：<br>sudo apt update<br>sudo apt install -y docker.io<br>sudo systemctl enable docker –now<br>测试：<br>输入docker，此时返回帮助信息</li>
+<li>安装docker-ce，<ul>
+<li>输入：<br>printf “%s\n” “deb [arch=amd64 signed-by=/usr/share/keyrings/docker-ce-archive-keyring.gpg] <a target="_blank" rel="noopener" href="https://download.docker.com/linux/debian">https://download.docker.com/linux/debian</a> buster stable” <br>| sudo tee /etc/apt/sources.list.d/docker-ce.list</li>
+<li>导入 gpg key:<br>curl -fsSL <a target="_blank" rel="noopener" href="https://download.docker.com/linux/debian/gpg">https://download.docker.com/linux/debian/gpg</a> <br>| gpg –dearmor <br>| sudo tee /usr/share/keyrings/docker-ce-archive-keyring.gpg<br>返回一堆乱码</li>
+<li>安装docker-ce命令:<br>sudo apt update<br>sudo apt install -y docker-ce docker-ce-cli containerd.io</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>验证是否成功可输入：<br>sudo docker run hello-world</li>
+</ul>
+<h3 id="安装docker-compose："><a href="#安装docker-compose：" class="headerlink" title="安装docker-compose："></a>安装docker-compose：</h3><ul>
+<li><p><strong>方法一</strong>：<br>sudo pip install docker-compose<br>听说用pip安装docker-compose的话可能会遇到奇怪的问题。<br>记得加上sudo，否则不会添加路径到环境变量中。</p>
+</li>
+<li><p><strong>方法二</strong>：<br>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/pushiqiang/article/details/78682323">https://blog.csdn.net/pushiqiang/article/details/78682323</a><br>通过修改URL中的版本，可以自定义需要的版本。</p>
+<ul>
+<li>github获取则输入：<br>sudo curl -L <a target="_blank" rel="noopener" href="https://github.com/docker/compose/releases/download/1.16.1/docker-compose-%60uname">https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname</a> -s<code>-</code>uname -m` -o /usr/local/bin/docker-compose</li>
+<li>通过daocloud获取可输入：<br>curl -L <a target="_blank" rel="noopener" href="https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-%60uname">https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname</a> -s<code>-</code>uname -m` &gt; /usr/local/bin/docker-compose</li>
+<li>添加可执行权限：<br>chmod +x /usr/local/bin/docker-compose</li>
+</ul>
+</li>
+<li><p>验证：<br>输入：<br>docker-compose –version<br>返回：</p>
+<blockquote>
+<p>docker-compose version 1.29.2, build unknown</p>
+</blockquote>
+</li>
+</ul>
+<p>docker使用方法可参考：<br><a target="_blank" rel="noopener" href="https://vuepress.mirror.docker-practice.com/introduction/">Docker — 从入门到实践</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="全球互联网"><a href="#全球互联网" class="headerlink" title="全球互联网"></a>全球互联网</h2><p>GitHub上的软件或一些浏览器插件，不好详细说明，可参考其他教程。</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="蚁剑安装和使用"><a href="#蚁剑安装和使用" class="headerlink" title="蚁剑安装和使用"></a>蚁剑安装和使用</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://doc.u0u.us/zh-hans/getting_started/get_antsword.html">https://doc.u0u.us/zh-hans/getting_started/get_antsword.html</a><br><a target="_blank" rel="noopener" href="https://www.yuque.com/antswordproject/antsword/srruro">https://www.yuque.com/antswordproject/antsword/srruro</a></p>
+<p>下载Linux 64位版本加载器：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/AntSword-Loader">https://github.com/AntSwordProject/AntSword-Loader</a></p>
+<p>解压，进入文件夹输入./AntSword运行，选择一个空目录下载存放蚁剑源代码，介绍和使用方法请看参考链接</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="burpsuit换成专业版"><a href="#burpsuit换成专业版" class="headerlink" title="burpsuit换成专业版"></a>burpsuit换成专业版</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yeblade/p/14266385.html">kali安装专业版burpsuite - 2021年</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Richard_qi/article/details/104663060">kali安装BurpSuite pro版(小白笔记) - 2020年</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/HACKETTx/article/details/103786249">Kali 安装Burpsuite Pro - 2019年</a><br>自带的burpsuit是社区版，换成专业版更强大。<br>笔者尚未尝试此操作，可以参考上面的链接教程。<br>其中第一个链接教程中注册机的下载地址是：<a target="_blank" rel="noopener" href="https://www.lanzoui.com/iJmSJkavl2j">https://www.lanzoui.com/iJmSJkavl2j</a>，似乎打错了。</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="安装tor"><a href="#安装tor" class="headerlink" title="安装tor"></a>安装tor</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/culingluan4376/article/details/108707008">在Linux上安装和使用Tor浏览器</a><br><a target="_blank" rel="noopener" href="https://www.bbskali.cn/thread-1585-1-1.html">kali linux搭建tor</a></p>
+<p>tor可以伪装ip，用于爆破时避免被封IP等，不过速度很慢。</p>
+<ul>
+<li>终端输入命令下载安装，但是需要翻墙，而且据说ubuntu社区未维护好更新。<br><del>终端输入：<br>sudo apt intall tor</del></li>
+<li>浏览器获取安装包下载<br>进入链接获取，打开下载即可：<br><a target="_blank" rel="noopener" href="https://github.com/TheTorProject/gettorbrowser">Tor - GitHub</a><br><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/t-browser/files/">Tor - sourceforge</a><br>如果链接不好用，就搜索引擎搜一下。</li>
+</ul>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>待补充：远程ssh登录kali虚拟机，上电或定时开机自启kali虚拟机的方法等</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/kali-linux/" rel="tag"># kali linux</a>
+              <a href="/tags/security/" rel="tag"># security</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/06/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85kali-linux%E5%90%8E%E7%9A%84%E5%87%86%E5%A4%87%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">安装kali linux后的准备操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">基础使用知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%9B%B4%E6%96%B0%E6%8D%A2%E6%BA%90"><span class="nav-number">1.2.</span> <span class="nav-text">软件更新换源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">中文输入法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">日文输入法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-%E7%9A%84%E5%89%AA%E8%B4%B4%E6%9D%BF%E4%B8%8E%E7%B3%BB%E7%BB%9F%E4%BA%92%E9%80%9A"><span class="nav-number">1.5.</span> <span class="nav-text">vim 的剪贴板与系统互通</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-pip%E5%AE%89%E8%A3%85"><span class="nav-number">1.6.</span> <span class="nav-text">python pip安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker%E7%AE%80%E4%BB%8B%E5%92%8C%E5%AE%89%E8%A3%85"><span class="nav-number">1.7.</span> <span class="nav-text">docker简介和安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%EF%BC%9A"><span class="nav-number">1.7.1.</span> <span class="nav-text">名词解释：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85docker%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="nav-number">1.7.2.</span> <span class="nav-text">安装docker步骤：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85docker-compose%EF%BC%9A"><span class="nav-number">1.7.3.</span> <span class="nav-text">安装docker-compose：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E7%90%83%E4%BA%92%E8%81%94%E7%BD%91"><span class="nav-number">1.8.</span> <span class="nav-text">全球互联网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%9A%81%E5%89%91%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="nav-number">1.9.</span> <span class="nav-text">蚁剑安装和使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#burpsuit%E6%8D%A2%E6%88%90%E4%B8%93%E4%B8%9A%E7%89%88"><span class="nav-number">1.10.</span> <span class="nav-text">burpsuit换成专业版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85tor"><span class="nav-number">1.11.</span> <span class="nav-text">安装tor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.12.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Kevin Cai</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">[object Object]</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

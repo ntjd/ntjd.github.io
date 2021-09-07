@@ -215,4 +215,184 @@
         <tag>security</tag>
       </tags>
   </entry>
+  <entry>
+    <title>信息安全学习总结</title>
+    <url>/2021/09/07/2021-09-07/</url>
+    <content><![CDATA[<p>急需：密码学，攻击的防御方法，常见安全工具(nmap，sqlmap，Appscan，AWVS)使用和实现原理，常见网络协议细节，简单编程</p>
+<h1 id="信息安全-学习"><a href="#信息安全-学习" class="headerlink" title="信息安全 学习"></a>信息安全 学习</h1><p>建议安装 KALI 并学习，建议做 CTF 题目，建议了解基础计算机相关知识，建议去漏洞平台提交漏洞。</p>
+<p>帮助：<br><a href="https://www.bilibili.com/read/cv12315967">愿安全人不在踩坑，网络安全的学习经验</a></p>
+<span id="more"></span>
+
+<p>坑：</p>
+<ol>
+<li>打ctf 时有时flag不会显示到网页上，但在html源代码等地方，所以有时觉得操作没错但是没反应，可以看看源代码是否有flag。</li>
+<li>在burpsuite的repeater里GET请求和POST请求互换时，右键选择change request method来更换，自己修改会可能会忘记编辑名为Content-Type的请求头导致无正确响应。参考：<a href="https://www.cnblogs.com/fengff/p/10843728.html">POST 提交数据的几种方式</a></li>
+</ol>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="kali-linux环境准备"><a href="#kali-linux环境准备" class="headerlink" title="kali linux环境准备"></a>kali linux环境准备</h2><p>参考帮助里的链接。</p>
+<p>帮助：<br><a href="https://www.kali.org/get-kali/">获取kali linux</a><br><a href="https://blog.csdn.net/kaihang_cai/article/details/119791713">安装kali linux后的准备工作</a><br><a href="https://zing.gitbooks.io/kali-lunix/content/">Kali Linux 工具使用中文说明书</a></p>
+<h2 id="windows环境准备"><a href="#windows环境准备" class="headerlink" title="windows环境准备"></a>windows环境准备</h2><p>安装Appscan、AWVS、Burpsuite Pro</p>
+<p>帮助(这些链接未看，待审核)：<br><a href="https://www.cnblogs.com/yinrw/p/14115669.html">AppScan安装和破解</a><br><a href="https://www.cnblogs.com/firstdream/p/8205346.html">WVS简单使用</a><br><a href="https://zhuanlan.zhihu.com/p/102570351">Acunetix的安装和简单使用</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="常见的重要配置文件默认位置"><a href="#常见的重要配置文件默认位置" class="headerlink" title="常见的重要配置文件默认位置"></a>常见的重要配置文件默认位置</h2><p>参考：<a href="https://www.cnblogs.com/zhaijiahui/p/8459661.html">整理了一些下载利用文件</a></p>
+<p>Linux：</p>
+<ol>
+<li>/etc/passwd                                 保存了系统中所有的用户信息</li>
+<li>/etc/shadow                                用户的密码信息</li>
+<li>/root/.ssh/authorized_keys         公钥文件</li>
+<li>/root/.bash_history                      用户终端操作历史记录</li>
+<li>/root/.ssh/authorized_keys<br>/root/.ssh/id_rsa<br>/root/.ssh/id_ras.keystore<br>/root/.ssh/known_hosts //记录每个访问计算机用户的公钥</li>
+<li>/etc/my.cnf //mysql配置文件</li>
+<li>/etc/httpd/conf/httpd.conf //apache配置文件</li>
+<li>/root/.bash_history //用户历史命令记录文件</li>
+<li>/root/.mysql_history //mysql历史命令记录文件</li>
+<li>/proc/mounts //记录系统挂载设备</li>
+<li>/porc/config.gz //内核配置文件</li>
+<li>/var/lib/mlocate/mlocate.db //全文件路径</li>
+<li>/porc/self/cmdline //当前进程的cmdline参数</li>
+</ol>
+<p>参考：<br><a href="https://blog.csdn.net/qq_17204441/article/details/89062592">Linux重要配置文件</a><br><a href="https://blog.csdn.net/qq_44159028/article/details/116723804">系统重要配置文件路径</a></p>
+<p>Windows：</p>
+<ol>
+<li>/windows/win.ini 或 C:\Windows\win.ini //Windows系统的一个基本系统配置文件</li>
+<li>C:\boot.ini //查看系统版本</li>
+<li>C:\Windows\System32\inetsrv\MetaBase.xml //IIS配置文件</li>
+<li>C:\Windows\repair\sam //存储系统初次安装的密码</li>
+<li>C:\Program Files\mysql\my.ini //Mysql配置</li>
+<li>C:\Program Files\mysql\data\mysql\user.MYD //Mysql root</li>
+<li>C:\Windows\php.ini //php配置信息</li>
+<li>C:\Windows\my.ini //Mysql配置信息</li>
+</ol>
+<p>PHP：</p>
+<ol>
+<li>/usr/local/php/etc/php.ini</li>
+</ol>
+<p> Apache：</p>
+<ol>
+<li>主配置文件：/etc/httpd/conf/httpd.conf</li>
+<li>默认站点主目录：/var/www/html/<br>参考：<a href="https://www.cnblogs.com/qianyuliang/p/6831942.html">Apache的主要目录和配置文件详解</a></li>
+</ol>
+<p>MySQL：</p>
+<ol>
+<li>/etc/my.cnf 或 /etc/mysql/my.cnf    Linux环境下</li>
+<li>my.ini   Windows环境下</li>
+</ol>
+<h2 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h2><p>帮助：<br><a href="https://blog.csdn.net/weixin_34015566/article/details/89693937">常用和不常用端口一览表收藏</a><br><a href="https://blog.csdn.net/qq_34646546/article/details/88545165">端口号大全</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="信息获取"><a href="#信息获取" class="headerlink" title="信息获取"></a>信息获取</h1><p>对于一个网站如何收集相关信息</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="web方向"><a href="#web方向" class="headerlink" title="web方向"></a>web方向</h1><ol>
+<li>file upload</li>
+<li>local file include</li>
+<li>xss跨站脚本攻击</li>
+<li>sql注入</li>
+<li>源码泄露</li>
+<li>爆破</li>
+<li>XML External Entity injection</li>
+<li>综合练习</li>
+</ol>
+<h2 id="文件上传漏洞（file-upload）"><a href="#文件上传漏洞（file-upload）" class="headerlink" title="文件上传漏洞（file upload）"></a>文件上传漏洞（file upload）</h2><p>题目：</p>
+<ol>
+<li><a href="https://buuoj.cn/challenges#Upload-Labs-Linux">BUU Upload-Labs-Linux 系列共20关</a><br>解答：<br><a href="https://xz.aliyun.com/t/4029">Upload-labs 通关笔记 - 20关</a><br><a href="https://blog.csdn.net/weixin_44677409/article/details/92799366">upload-labs通关记录 - 19关</a><br><a href="https://blog.csdn.net/mochu7777777/article/details/108687672">upload-labs闯关笔记 - 18关</a><br><a href="https://blog.csdn.net/weixin_45588247/article/details/119652017">upload-labs Pass-12：文件名检测00截断绕过</a><br><a href="https://xz.aliyun.com/t/2657">upload-labs Pass 16：绕过图片二次渲染</a><br>注：第6、8题需要服务器是window环境，似乎是因为服务器换了linux。第11、12题需要php版本小于5.3.4，这里服务器php版本是7.2.21。</li>
+<li>待补充</li>
+</ol>
+<p>帮助：<br><a href="https://www.cnblogs.com/vipygd/p/11279537.html">HTTP文件上传原理</a><br><a href="https://blog.csdn.net/chuangqudiao9845/article/details/101045517">一句话木马 - 介绍不好，待换</a><br><a href="https://www.cnblogs.com/WhiteHatKevil/p/10150480.html">php一句话木马 - 待换</a><br><a href="https://www.cnblogs.com/wang1204/p/5644827.html">php文件上传后缀与文件类型对照表</a><br><a href="https://www.php.cn/php-ask-453939.html">php文件隐藏，让别的后缀也能执行php文件</a></p>
+<h2 id="本地文件包含漏洞-Local-File-Include"><a href="#本地文件包含漏洞-Local-File-Include" class="headerlink" title="本地文件包含漏洞(Local File Include)"></a>本地文件包含漏洞(Local File Include)</h2><ol>
+<li>题目：<a href="https://buuoj.cn/challenges#LFI%20Labs">LFI Labs</a><br>解答：<a href=""></a></li>
+<li>题目：<a href="https://buuoj.cn/challenges#[HCTF%202018]WarmUp">[HCTF 2018]WarmUp</a><br>解答：<a href=""></a></li>
+</ol>
+<h2 id="XSS跨站脚本攻击-Cross-Site-Scripting"><a href="#XSS跨站脚本攻击-Cross-Site-Scripting" class="headerlink" title="XSS跨站脚本攻击(Cross Site Scripting)"></a>XSS跨站脚本攻击(Cross Site Scripting)</h2><p>题目：</p>
+<ol>
+<li><a href="https://buuoj.cn/challenges#XSS-Lab">BUU XSS-Lab</a><br>解答：<br><a href="https://blog.csdn.net/wo41ge/article/details/107459332">xss-labs通关大合集</a><br><a href="https://cloud.tencent.com/developer/article/1746740">xss-labs 通关学习笔记</a><br><a href="https://www.cnblogs.com/xiaomeng2333/p/11595786.html">xss靶场之xss-labs</a><br><a href="https://blog.csdn.net/qq_32393893/article/details/104814749">第14关 exif xss 复现</a><br><a href="https://cloud.tencent.com/developer/article/1677621">xss-labs第1~13关</a></li>
+<li><a href="https://buuoj.cn/challenges#BUU%20XSS%20COURSE%201">BUU XSS COURSE 1</a><br>解答：似乎有问题，没有admin用户的访问情况<br><a href="https://liuyucishi.wang/xssxue-xi-zhi-store-er/">BUU_XSS_Course</a><br><a href="https://www.manongdao.com/article-2258090.html">BUU XSS COURSE 1</a></li>
+</ol>
+<p>防御：</p>
+<p>帮助：<br><a href="https://www.qqxiuzi.cn/wz/zixun/1681.htm">ISO/IEC 8859-1 实体名称及其编号</a><br><a href="https://www.cnblogs.com/xcsn/p/3559624.html">HTML转义字符大全</a><br><a href="https://www.sqlsec.com/2020/01/xss.html">XSS 从零开始</a></p>
+<h2 id="CSRF跨站请求伪造-Cross-Site-Request-Forgery"><a href="#CSRF跨站请求伪造-Cross-Site-Request-Forgery" class="headerlink" title="CSRF跨站请求伪造(Cross Site Request Forgery)"></a>CSRF跨站请求伪造(Cross Site Request Forgery)</h2><p>题目：</p>
+<ol>
+<li></li>
+</ol>
+<p>防御：验证 HTTP Referer 字段；在请求地址中添加 token 并验证；在 HTTP 头中自定义属性并验证。</p>
+<p>帮助：<a href="https://zhuanlan.zhihu.com/p/114750961">什么是CSRF攻击？如何防御CRSF攻击？</a></p>
+<h2 id="SSRF服务器端请求伪造-Server-Side-Request-Forgery"><a href="#SSRF服务器端请求伪造-Server-Side-Request-Forgery" class="headerlink" title="SSRF服务器端请求伪造(Server-Side Request Forgery)"></a>SSRF服务器端请求伪造(Server-Side Request Forgery)</h2><p>帮助：<a href="https://cloud.tencent.com/developer/article/1561355">浅谈SSRF原理及其利用</a></p>
+<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p>题目：</p>
+<ol>
+<li><a href="https://adworld.xctf.org.cn/task/task_list?type=web&number=3&grade=1">攻防世界NewsCenter</a><br>解答：学习sqlmap用法</li>
+<li><a href="https://adworld.xctf.org.cn/task/task_list?type=web&number=3&grade=1&page=1">攻防世界supersqli</a> 或 <a href="https://buuoj.cn/challenges#[%E5%BC%BA%E7%BD%91%E6%9D%AF%202019]%E9%9A%8F%E4%BE%BF%E6%B3%A8">[强网杯 2019]随便注</a><br>解答：学习堆叠注入等，此题如果用sqlmap只能爆出库名supersqli<br><a href="https://blog.csdn.net/shuaicenglou3032/article/details/110450747">随便注write up</a><br><a href="https://blog.csdn.net/freerats/article/details/107735132">随便注&amp;[GYCTF2020]Blacklist -wp</a></li>
+<li><a href="https://adworld.xctf.org.cn/task/task_list?type=web&number=3&grade=1">攻防世界comment</a><br>解答：学习换行注释，注：题目下载的内容可能是不完整的，看下面链接。<br><a href="https://blog.csdn.net/weixin_43093631/article/details/106650625">攻防世界高手进阶之Web comment</a></li>
+<li><a href="https://buuoj.cn/challenges#sqli-labs">BUU sqli-labs</a></li>
+</ol>
+<p>防御：预编译</p>
+<p>帮助：<br><a href="https://blog.nowcoder.net/n/9d9987c816214f62b9266276da65e11f">深入理解SQL注入与预编译（上）</a><br><a href="https://blog.nowcoder.net/n/be73b8f592504ae8b1d00368433061be">深入理解SQL注入与预编译（下）</a><br><a href="https://www.cnblogs.com/iAmSoScArEd/articles/9263735.html">sqlmap常用操作命令</a><br><a href="https://blog.csdn.net/smli_ng/article/details/106026901">sqlmap使用</a></p>
+<h2 id="源码泄露"><a href="#源码泄露" class="headerlink" title="源码泄露"></a>源码泄露</h2><p>帮助：<a href="https://lddp.github.io/2018/05/10/WEB-%E6%BA%90%E7%A0%81%E6%B3%84%E6%BC%8F/">WEB安全-常见源码泄露</a></p>
+<h3 id="git源码泄露"><a href="#git源码泄露" class="headerlink" title="git源码泄露"></a>git源码泄露</h3><p>题目：</p>
+<ol>
+<li><a href="https://adworld.xctf.org.cn/task/task_list?type=web&number=3&grade=1&page=1">攻防世界mfw</a><br>解答：<a href="https://www.jianshu.com/p/795f918d791b">攻防世界-Web-mfw</a></li>
+</ol>
+<p>帮助：<br><a href="https://blog.csdn.net/xy_sunny/article/details/107620695">git信息泄露漏洞</a><br><a href="https://www.freebuf.com/articles/web/267597.html">.git信息泄露漏洞-原理</a><br><a href="https://github.com/lijiejie/GitHack">GitHack工具 可还原工程源代码 - github.com</a><br><a href="https://blog.csdn.net/qq_37450949/article/details/117821102">GitHack 和 GitHacker 工具比较</a></p>
+<h2 id="爆破"><a href="#爆破" class="headerlink" title="爆破"></a>爆破</h2><p>题目：</p>
+<ol>
+<li><a href="https://buuoj.cn/challenges#BUU%20BRUTE%201">BUU BRUTE 1</a><br>解答：</li>
+</ol>
+<p>帮助：<br><a href="https://github.com/rootphantomer/Blasting_dictionary">字典</a><br><a href="https://blog.csdn.net/weixin_43039349/article/details/89323846">web登录爆破（hydra的简单使用）</a></p>
+<h2 id="渗透"><a href="#渗透" class="headerlink" title="渗透"></a>渗透</h2><p>参考：<a href="https://www.sqlsec.com/2020/10/xss2.html">QQ 空间钓鱼网站</a></p>
+<p>帮助：<a href="https://www.jianshu.com/p/2f7fdb338431">有手就行：零基础渗透网站步骤</a></p>
+<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><h3 id="XXE-XML外部实体注入漏洞-XML-External-Entity-injection"><a href="#XXE-XML外部实体注入漏洞-XML-External-Entity-injection" class="headerlink" title="XXE XML外部实体注入漏洞(XML External Entity injection)"></a>XXE XML外部实体注入漏洞(XML External Entity injection)</h3><p>帮助：<a href="https://www.freebuf.com/articles/web/177979.html">XXE漏洞利用技巧：从XML到远程代码执行</a></p>
+<h3 id="CSV注入-CSV-Injection"><a href="#CSV注入-CSV-Injection" class="headerlink" title="CSV注入(CSV Injection)"></a>CSV注入(CSV Injection)</h3><p>帮助：<a href="https://blog.csdn.net/weixin_41924764/article/details/108665746">CSV注入漏洞原理及利用教程</a></p>
+<h2 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h2><p>题目：</p>
+<ol>
+<li><a href="https://buuoj.cn/challenges#Webug%204.0">BUU - Webug 4.0</a><br>解答：<br><a href="https://blog.csdn.net/weixin_41924764/article/details/107548754">webug4.0通关笔记</a><br><a href="https://www.jianshu.com/p/26d204ecaf69">webug4.0 第一关到第三十关笔记</a><br><a href="https://blog.csdn.net/qq_32434307/article/details/79480036">Nginx中的解析漏洞</a></li>
+<li><a href="https://buuoj.cn/challenges#Web-DVWA">BUU - Web-DVWA</a><br>解答：<a href="https://www.wuyini.cn/672.html">DVWA 靶场通关</a><br>帮助：<a href="http://3xp10it.cc/web/2017/08/20/sqlmap%E5%AF%B9%E7%8A%B6%E6%80%81%E7%A0%81404%E5%A4%84%E7%90%86%E7%9A%84bug/">sqlmap对状态码404处理的bug - DVWA盲注</a></li>
+<li><a href="https://buuoj.cn/challenges#PikaChu">PikaChu</a><br>解答：<a href="https://blog.csdn.net/BROTHERYY/article/details/106923848">Pikachu 通关笔记</a></li>
+</ol>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>帮助：<a href="https://blog.csdn.net/eastmount/category_10243741.html">安全攻防进阶篇</a></p>
+<h2 id="安卓逆向"><a href="#安卓逆向" class="headerlink" title="安卓逆向"></a>安卓逆向</h2><p>dex文件<br>smali语法</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>安装pwntools<br>终端输入：pip install pwn</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="漏洞记录"><a href="#漏洞记录" class="headerlink" title="漏洞记录"></a>漏洞记录</h1><p>按时间从新到旧排列<br>payload可以直接上GitHub上搜索</p>
+<h2 id="1-php"><a href="#1-php" class="headerlink" title="1.php"></a>1.php</h2><p>时间 | 影响范围 | 漏洞类型 | 参考文献 | 复现<br>|:———–:|:————-:|:————-:|:——–:|:—-:|<br>2019.1.11 | ThinkPHP 5.0.x ~ 5.0.23 <br/> ThinkPHP 5.1.x ~ 5.1.31 <br/> ThinkPHP 5.2.0beta1 | 高危RCE |  <a href="http://blog.nsfocus.net/thinkphp-full-version-rce-vulnerability-analysis/">THINKPHP 全版本远程代码执行漏洞分析</a> <br/> <a href="https://www.chabug.org/audit/1078.html">Thinkphp5 RCE总结</a> | <a href="https://adworld.xctf.org.cn/task/task_list?type=web&number=3&grade=1">攻防世界php_rce</a></p>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<h2 id="2-router"><a href="#2-router" class="headerlink" title="2.router"></a>2.router</h2><p>路由器漏洞</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h1><p>对称加密和非对称加密<br>常见加密算法及其实现</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="安全工具使用和实现原理"><a href="#安全工具使用和实现原理" class="headerlink" title="安全工具使用和实现原理"></a>安全工具使用和实现原理</h1><h2 id="burp-suite"><a href="#burp-suite" class="headerlink" title="burp suite"></a>burp suite</h2><p>帮助：<a href="https://blog.csdn.net/weixin_44037296/article/details/102781785">Burp Suite中Intruder模块的使用详解</a></p>
+<h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h2><p>原理：<br><a href="https://iassas.com/archives/e409b646.html">SQLMap 原理分析 (一)</a><br><a href="https://iassas.com/archives/782ab1db.html">SQLMap 原理分析 (二)</a><br><a href="https://blog.csdn.net/somnuszhigang/article/details/103163942">sqlmap os-shell原理</a></p>
+<p>帮助：<br><a href="https://blog.csdn.net/qq_27446553/article/details/53291898">使用Sqlmap的你可能踩中了“蜜罐”</a></p>
+<h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><p>原理：<br><a href="https://blog.csdn.net/aspirationflow/article/details/7694274">Nmap扫描原理与用法</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="简单算法编程"><a href="#简单算法编程" class="headerlink" title="简单算法编程"></a>简单算法编程</h1><p>数据结构：数组、字符串、栈、堆、哈希表、二叉树、图等<br>算法：二分查找、广度/深度搜索、动态规划等</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="其他常见知识"><a href="#其他常见知识" class="headerlink" title="其他常见知识"></a>其他常见知识</h1><p><a href="https://blog.csdn.net/tryheart/article/details/106818422">网络安全常见面试题 - 对于某些攻击的防御方法等</a><br><a href="https://blog.csdn.net/Butterfly_resting/article/details/89638424">几率大的网络安全面试题</a></p>
+]]></content>
+      <categories>
+        <category>security</category>
+      </categories>
+      <tags>
+        <tag>security</tag>
+      </tags>
+  </entry>
 </search>

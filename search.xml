@@ -218,7 +218,7 @@
   <entry>
     <title>信息安全学习总结</title>
     <url>/2021/09/07/2021-09-07/</url>
-    <content><![CDATA[<p>急需：密码学，攻击的防御方法，常见安全工具(nmap，sqlmap，Appscan，AWVS)使用和实现原理，常见网络协议细节，简单编程</p>
+    <content><![CDATA[<p>待添加：密码学，攻击的防御方法，常见安全工具(nmap，sqlmap，Appscan，AWVS)使用和实现原理，常见网络协议细节，简单编程、</p>
 <h1 id="信息安全-学习"><a href="#信息安全-学习" class="headerlink" title="信息安全 学习"></a>信息安全 学习</h1><p>建议安装 KALI 并学习，建议做 CTF 题目，建议了解基础计算机相关知识，建议去漏洞平台提交漏洞。</p>
 <p>帮助：<br><a href="https://www.bilibili.com/read/cv12315967">愿安全人不在踩坑，网络安全的学习经验</a></p>
 <span id="more"></span>
@@ -282,7 +282,7 @@
 <h2 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h2><p>帮助：<br><a href="https://blog.csdn.net/weixin_34015566/article/details/89693937">常用和不常用端口一览表收藏</a><br><a href="https://blog.csdn.net/qq_34646546/article/details/88545165">端口号大全</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
-<h1 id="信息获取"><a href="#信息获取" class="headerlink" title="信息获取"></a>信息获取</h1><p>对于一个网站如何收集相关信息</p>
+<h1 id="信息获取"><a href="#信息获取" class="headerlink" title="信息获取"></a>信息获取</h1><p>对于一个网站、软件、服务器等如何收集相关信息</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="web方向"><a href="#web方向" class="headerlink" title="web方向"></a>web方向</h1><ol>
@@ -358,6 +358,11 @@
 <h1 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>安装pwntools<br>终端输入：pip install pwn</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="杂项-1"><a href="#杂项-1" class="headerlink" title="杂项"></a>杂项</h2><h3 id="python漏洞"><a href="#python漏洞" class="headerlink" title="python漏洞"></a>python漏洞</h3><p>参考：<a href="https://blog.csdn.net/kelxLZ/article/details/111893448">Python开发常见漏洞</a></p>
+<h3 id="条件竞争"><a href="#条件竞争" class="headerlink" title="条件竞争"></a>条件竞争</h3><h4 id="TOCTTOU攻击"><a href="#TOCTTOU攻击" class="headerlink" title="TOCTTOU攻击"></a>TOCTTOU攻击</h4><p>参考：<a href="https://www.cnblogs.com/liqiuhao/p/9450093.html">关于TOCTTOU攻击的简介</a></p>
+<h2 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h2><p>彩虹表抵御方法：加盐</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
 <h1 id="漏洞记录"><a href="#漏洞记录" class="headerlink" title="漏洞记录"></a>漏洞记录</h1><p>按时间从新到旧排列<br>payload可以直接上GitHub上搜索</p>
 <h2 id="1-php"><a href="#1-php" class="headerlink" title="1.php"></a>1.php</h2><p>时间 | 影响范围 | 漏洞类型 | 参考文献 | 复现<br>|:———–:|:————-:|:————-:|:——–:|:—-:|<br>2019.1.11 | ThinkPHP 5.0.x ~ 5.0.23 <br/> ThinkPHP 5.1.x ~ 5.1.31 <br/> ThinkPHP 5.2.0beta1 | 高危RCE |  <a href="http://blog.nsfocus.net/thinkphp-full-version-rce-vulnerability-analysis/">THINKPHP 全版本远程代码执行漏洞分析</a> <br/> <a href="https://www.chabug.org/audit/1078.html">Thinkphp5 RCE总结</a> | <a href="https://adworld.xctf.org.cn/task/task_list?type=web&number=3&grade=1">攻防世界php_rce</a></p>
 <table>
@@ -374,19 +379,20 @@
 <h2 id="2-router"><a href="#2-router" class="headerlink" title="2.router"></a>2.router</h2><p>路由器漏洞</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
-<h1 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h1><p>对称加密和非对称加密<br>常见加密算法及其实现</p>
+<h1 id="密码学-1"><a href="#密码学-1" class="headerlink" title="密码学"></a>密码学</h1><p>对称加密和非对称加密<br>常见加密算法及其实现</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
-<h1 id="安全工具使用和实现原理"><a href="#安全工具使用和实现原理" class="headerlink" title="安全工具使用和实现原理"></a>安全工具使用和实现原理</h1><h2 id="burp-suite"><a href="#burp-suite" class="headerlink" title="burp suite"></a>burp suite</h2><p>帮助：<a href="https://blog.csdn.net/weixin_44037296/article/details/102781785">Burp Suite中Intruder模块的使用详解</a></p>
+<h1 id="安全工具使用和实现原理"><a href="#安全工具使用和实现原理" class="headerlink" title="安全工具使用和实现原理"></a>安全工具使用和实现原理</h1><h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>帮助：<a href="https://zing.gitbooks.io/kali-lunix/content/">Kali Linux 工具使用中文说明书</a></p>
+<h2 id="burp-suite"><a href="#burp-suite" class="headerlink" title="burp suite"></a>burp suite</h2><p>帮助：<a href="https://blog.csdn.net/weixin_44037296/article/details/102781785">Burp Suite中Intruder模块的使用详解</a></p>
 <h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h2><p>原理：<br><a href="https://iassas.com/archives/e409b646.html">SQLMap 原理分析 (一)</a><br><a href="https://iassas.com/archives/782ab1db.html">SQLMap 原理分析 (二)</a><br><a href="https://blog.csdn.net/somnuszhigang/article/details/103163942">sqlmap os-shell原理</a></p>
-<p>帮助：<br><a href="https://blog.csdn.net/qq_27446553/article/details/53291898">使用Sqlmap的你可能踩中了“蜜罐”</a></p>
+<p>帮助：<br><a href="https://blog.csdn.net/qq_27446553/article/details/53291898">使用Sqlmap的你可能踩中了“蜜罐”</a><br><a href="https://blog.csdn.net/DaoDivDiFang/article/details/106899847">关于/dev/tcp/host/port</a></p>
 <h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><p>原理：<br><a href="https://blog.csdn.net/aspirationflow/article/details/7694274">Nmap扫描原理与用法</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="简单算法编程"><a href="#简单算法编程" class="headerlink" title="简单算法编程"></a>简单算法编程</h1><p>数据结构：数组、字符串、栈、堆、哈希表、二叉树、图等<br>算法：二分查找、广度/深度搜索、动态规划等</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
-<h1 id="其他常见知识"><a href="#其他常见知识" class="headerlink" title="其他常见知识"></a>其他常见知识</h1><p><a href="https://blog.csdn.net/tryheart/article/details/106818422">网络安全常见面试题 - 对于某些攻击的防御方法等</a><br><a href="https://blog.csdn.net/Butterfly_resting/article/details/89638424">几率大的网络安全面试题</a></p>
+<h1 id="其他常见知识"><a href="#其他常见知识" class="headerlink" title="其他常见知识"></a>其他常见知识</h1><p><a href="https://blog.csdn.net/maoji/article/details/52798467">安全漏洞概念及分类</a><br><a href="https://blog.csdn.net/tryheart/article/details/106818422">网络安全常见面试题 - 对于某些攻击的防御方法等</a><br><a href="https://blog.csdn.net/Butterfly_resting/article/details/89638424">几率大的网络安全面试题</a><br><a href="https://cookie.blog.csdn.net/article/details/109019491">渗透测试面试问题合集</a></p>
 ]]></content>
       <categories>
         <category>security</category>

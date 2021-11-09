@@ -218,9 +218,11 @@
   <entry>
     <title>信息安全学习总结</title>
     <url>/2021/09/07/2021-09-07/</url>
-    <content><![CDATA[<p>待添加：密码学，攻击的防御方法，常见安全工具(nmap，sqlmap，Appscan，AWVS)使用和实现原理，常见网络协议细节，简单编程、</p>
-<h1 id="信息安全-学习"><a href="#信息安全-学习" class="headerlink" title="信息安全 学习"></a>信息安全 学习</h1><p>建议安装 KALI 并学习，建议做 CTF 题目，建议了解基础计算机相关知识，建议去漏洞平台提交漏洞。</p>
-<p>帮助：<br><a href="https://www.bilibili.com/read/cv12315967">愿安全人不在踩坑，网络安全的学习经验</a></p>
+    <content><![CDATA[<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<p>待添加：密码学，攻击的防御方法，常见安全工具(nmap，sqlmap，Appscan，AWVS)使用和实现原理，常见网络协议细节，简单编程、</p>
+<h1 id="信息安全-学习"><a href="#信息安全-学习" class="headerlink" title="信息安全 学习"></a>信息安全 学习</h1><p>建议安装 KALI 并学习，建议做 CTF 题目，建议了解基础计算机相关知识，建议去漏洞平台提交漏洞。<br>二进制方向强烈建议看 <a href="https://firmianay.gitbooks.io/ctf-all-in-one/content/">CTF-All-In-One 《CTF 竞赛入门指南》</a>，它和本文的最终目标形态相近</p>
+<p>帮助：<br><a href="https://firmianay.gitbooks.io/ctf-all-in-one/content/">CTF-All-In-One 《CTF 竞赛入门指南》</a><br><a href="https://www.bilibili.com/read/cv12315967">愿安全人不在踩坑，网络安全的学习经验</a><br><a href="https://www.sec-wiki.com/skill">安全技能 -SecWiki</a><br><a href="https://github.com/phith0n/Mind-Map">phith0n Mind-Map思维导图</a><br><a href="https://github.com/riusksk/secbook">信息安全从业者书单推荐</a></p>
 <span id="more"></span>
 
 <p>坑：</p>
@@ -300,7 +302,14 @@
 <li><a href="https://buuoj.cn/challenges#Upload-Labs-Linux">BUU Upload-Labs-Linux 系列共20关</a><br>解答：<br><a href="https://xz.aliyun.com/t/4029">Upload-labs 通关笔记 - 20关</a><br><a href="https://blog.csdn.net/weixin_44677409/article/details/92799366">upload-labs通关记录 - 19关</a><br><a href="https://blog.csdn.net/mochu7777777/article/details/108687672">upload-labs闯关笔记 - 18关</a><br><a href="https://blog.csdn.net/weixin_45588247/article/details/119652017">upload-labs Pass-12：文件名检测00截断绕过</a><br><a href="https://xz.aliyun.com/t/2657">upload-labs Pass 16：绕过图片二次渲染</a><br>注：第6、8题需要服务器是window环境，似乎是因为服务器换了linux。第11、12题需要php版本小于5.3.4，这里服务器php版本是7.2.21。</li>
 <li>待补充</li>
 </ol>
-<p>帮助：<br><a href="https://www.cnblogs.com/vipygd/p/11279537.html">HTTP文件上传原理</a><br><a href="https://blog.csdn.net/chuangqudiao9845/article/details/101045517">一句话木马 - 介绍不好，待换</a><br><a href="https://www.cnblogs.com/WhiteHatKevil/p/10150480.html">php一句话木马 - 待换</a><br><a href="https://www.cnblogs.com/wang1204/p/5644827.html">php文件上传后缀与文件类型对照表</a><br><a href="https://www.php.cn/php-ask-453939.html">php文件隐藏，让别的后缀也能执行php文件</a></p>
+<p>防御：</p>
+<ol>
+<li>文件上传的目录设置为不可执行</li>
+<li>白名单判断文件类型，应综合使用MIME Type、后缀校验等方式，对于图片等类型可以使用压缩函数等破坏文件中的代码。</li>
+<li>随机数重命名文件名和文件路径</li>
+<li>另外设置文件服务器域名，由于浏览器同源策略，客户端攻击将解决不少，但这需要看业务情况。</li>
+</ol>
+<p>帮助：<br><a href="https://www.cnblogs.com/vipygd/p/11279537.html">HTTP文件上传原理</a><br><a href="https://blog.csdn.net/chuangqudiao9845/article/details/101045517">一句话木马 - 介绍不好，待换</a><br><a href="https://www.cnblogs.com/WhiteHatKevil/p/10150480.html">php一句话木马 - 待换</a><br><a href="https://www.cnblogs.com/wang1204/p/5644827.html">php文件上传后缀与文件类型对照表</a><br><a href="https://www.php.cn/php-ask-453939.html">php文件隐藏，让别的后缀也能执行php文件</a><br><a href="https://blog.csdn.net/weixin_30340269/article/details/113668828">几种文件上传漏洞介绍</a></p>
 <h2 id="本地文件包含漏洞-Local-File-Include"><a href="#本地文件包含漏洞-Local-File-Include" class="headerlink" title="本地文件包含漏洞(Local File Include)"></a>本地文件包含漏洞(Local File Include)</h2><ol>
 <li>题目：<a href="https://buuoj.cn/challenges#LFI%20Labs">LFI Labs</a><br>解答：<a href=""></a></li>
 <li>题目：<a href="https://buuoj.cn/challenges#[HCTF%202018]WarmUp">[HCTF 2018]WarmUp</a><br>解答：<a href=""></a></li>
@@ -311,14 +320,26 @@
 <li><a href="https://buuoj.cn/challenges#BUU%20XSS%20COURSE%201">BUU XSS COURSE 1</a><br>解答：似乎有问题，没有admin用户的访问情况<br><a href="https://liuyucishi.wang/xssxue-xi-zhi-store-er/">BUU_XSS_Course</a><br><a href="https://www.manongdao.com/article-2258090.html">BUU XSS COURSE 1</a></li>
 </ol>
 <p>防御：</p>
-<p>帮助：<br><a href="https://www.qqxiuzi.cn/wz/zixun/1681.htm">ISO/IEC 8859-1 实体名称及其编号</a><br><a href="https://www.cnblogs.com/xcsn/p/3559624.html">HTML转义字符大全</a><br><a href="https://www.sqlsec.com/2020/01/xss.html">XSS 从零开始</a></p>
+<ol>
+<li>关键cookie加上HttpOnly(浏览器将禁止Javascript访问带有HttpOnly属性的Cookie)，基本解决Cookie劫持，缓解XSS攻击。</li>
+<li>输出时检查，变量输出到页面时，使用编码或转义，如Html代码使用HtmlEncode转为HTMLEntities（如 &lt; 转为 &amp;lt;），Javascript使用JavascriptEncode并将输出的变量放在引号内部（如var x = “1; alert(1)”;）。</li>
+<li>输入时检查，XSS Filter，也用于格式检查，过滤或编码特殊字符，但可能改变用户的语义。</li>
+<li></li>
+</ol>
+<p>帮助：<br><a href="https://www.qqxiuzi.cn/wz/zixun/1681.htm">ISO/IEC 8859-1 实体名称及其编号</a><br><a href="https://www.cnblogs.com/xcsn/p/3559624.html">HTML转义字符大全</a><br><a href="https://www.sqlsec.com/2020/01/xss.html">XSS 从零开始</a><br><a href="https://blog.csdn.net/wswokao/article/details/80884582">XSS绕过WAF姿势总结</a><br><a href="https://www.cnblogs.com/wjrblogs/p/12341190.html">XSS之绕过简单WAF总结 </a></p>
 <h2 id="CSRF跨站请求伪造-Cross-Site-Request-Forgery"><a href="#CSRF跨站请求伪造-Cross-Site-Request-Forgery" class="headerlink" title="CSRF跨站请求伪造(Cross Site Request Forgery)"></a>CSRF跨站请求伪造(Cross Site Request Forgery)</h2><p>题目：</p>
 <ol>
 <li></li>
 </ol>
-<p>防御：验证 HTTP Referer 字段；在请求地址中添加 token 并验证；在 HTTP 头中自定义属性并验证。</p>
+<p>防御：</p>
+<ol>
+<li>重要操作要求验证码（辅助防御手段）</li>
+<li>验证 HTTP Referer 字段（不一定能获取，所以只能作为监控手段）；或者使用 Origin 头来让服务端判断请求是否来自合法的源（不那么容易伪造或清空，可防范CSRF）</li>
+<li>在请求表单（或AJAX，如果用GET放在URL中可能被Referer头泄露）中添加 token 并与 cookie/session 中的 token 验证。</li>
+</ol>
 <p>帮助：<a href="https://zhuanlan.zhihu.com/p/114750961">什么是CSRF攻击？如何防御CRSF攻击？</a></p>
 <h2 id="SSRF服务器端请求伪造-Server-Side-Request-Forgery"><a href="#SSRF服务器端请求伪造-Server-Side-Request-Forgery" class="headerlink" title="SSRF服务器端请求伪造(Server-Side Request Forgery)"></a>SSRF服务器端请求伪造(Server-Side Request Forgery)</h2><p>帮助：<a href="https://cloud.tencent.com/developer/article/1561355">浅谈SSRF原理及其利用</a></p>
+<h2 id="SSTI-服务器端模板注入-Server-Side-Template-Injection"><a href="#SSTI-服务器端模板注入-Server-Side-Template-Injection" class="headerlink" title="SSTI 服务器端模板注入(Server-Side Template Injection)"></a>SSTI 服务器端模板注入(Server-Side Template Injection)</h2><p>帮助：<a href="https://www.cnblogs.com/bmjoker/p/13508538.html">SSTI（模板注入）漏洞</a></p>
 <h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p>题目：</p>
 <ol>
 <li><a href="https://adworld.xctf.org.cn/task/task_list?type=web&number=3&grade=1">攻防世界NewsCenter</a><br>解答：学习sqlmap用法</li>
@@ -326,7 +347,13 @@
 <li><a href="https://adworld.xctf.org.cn/task/task_list?type=web&number=3&grade=1">攻防世界comment</a><br>解答：学习换行注释，注：题目下载的内容可能是不完整的，看下面链接。<br><a href="https://blog.csdn.net/weixin_43093631/article/details/106650625">攻防世界高手进阶之Web comment</a></li>
 <li><a href="https://buuoj.cn/challenges#sqli-labs">BUU sqli-labs</a></li>
 </ol>
-<p>防御：预编译</p>
+<p>防御：</p>
+<ol>
+<li>使用预编译语句</li>
+<li>使用安全的储存过程 </li>
+<li>如果无法避免动态SQL语句，应使用严格的输入过滤，如检查输入数据的数据格式和类型，或者使用安全的编码函数处理输入</li>
+<li>数据库应该遵循最小权限原则，也应该为每个应用分配不同的账户。</li>
+</ol>
 <p>帮助：<br><a href="https://blog.nowcoder.net/n/9d9987c816214f62b9266276da65e11f">深入理解SQL注入与预编译（上）</a><br><a href="https://blog.nowcoder.net/n/be73b8f592504ae8b1d00368433061be">深入理解SQL注入与预编译（下）</a><br><a href="https://www.cnblogs.com/iAmSoScArEd/articles/9263735.html">sqlmap常用操作命令</a><br><a href="https://blog.csdn.net/smli_ng/article/details/106026901">sqlmap使用</a></p>
 <h2 id="源码泄露"><a href="#源码泄露" class="headerlink" title="源码泄露"></a>源码泄露</h2><p>帮助：<a href="https://lddp.github.io/2018/05/10/WEB-%E6%BA%90%E7%A0%81%E6%B3%84%E6%BC%8F/">WEB安全-常见源码泄露</a></p>
 <h3 id="git源码泄露"><a href="#git源码泄露" class="headerlink" title="git源码泄露"></a>git源码泄露</h3><p>题目：</p>
@@ -341,8 +368,10 @@
 <p>帮助：<br><a href="https://github.com/rootphantomer/Blasting_dictionary">字典</a><br><a href="https://blog.csdn.net/weixin_43039349/article/details/89323846">web登录爆破（hydra的简单使用）</a></p>
 <h2 id="渗透"><a href="#渗透" class="headerlink" title="渗透"></a>渗透</h2><p>参考：<a href="https://www.sqlsec.com/2020/10/xss2.html">QQ 空间钓鱼网站</a></p>
 <p>帮助：<a href="https://www.jianshu.com/p/2f7fdb338431">有手就行：零基础渗透网站步骤</a></p>
+<h3 id="数据库提权"><a href="#数据库提权" class="headerlink" title="数据库提权"></a>数据库提权</h3><p>UDF<br>帮助：<a href="https://blog.csdn.net/l1028386804/article/details/85768994">渗透之数据库提权</a></p>
 <h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><h3 id="XXE-XML外部实体注入漏洞-XML-External-Entity-injection"><a href="#XXE-XML外部实体注入漏洞-XML-External-Entity-injection" class="headerlink" title="XXE XML外部实体注入漏洞(XML External Entity injection)"></a>XXE XML外部实体注入漏洞(XML External Entity injection)</h3><p>帮助：<a href="https://www.freebuf.com/articles/web/177979.html">XXE漏洞利用技巧：从XML到远程代码执行</a></p>
 <h3 id="CSV注入-CSV-Injection"><a href="#CSV注入-CSV-Injection" class="headerlink" title="CSV注入(CSV Injection)"></a>CSV注入(CSV Injection)</h3><p>帮助：<a href="https://blog.csdn.net/weixin_41924764/article/details/108665746">CSV注入漏洞原理及利用教程</a></p>
+<h3 id="CRLF-注入"><a href="#CRLF-注入" class="headerlink" title="CRLF 注入"></a>CRLF 注入</h3><p>帮助：</p>
 <h2 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h2><p>题目：</p>
 <ol>
 <li><a href="https://buuoj.cn/challenges#Webug%204.0">BUU - Webug 4.0</a><br>解答：<br><a href="https://blog.csdn.net/weixin_41924764/article/details/107548754">webug4.0通关笔记</a><br><a href="https://www.jianshu.com/p/26d204ecaf69">webug4.0 第一关到第三十关笔记</a><br><a href="https://blog.csdn.net/qq_32434307/article/details/79480036">Nginx中的解析漏洞</a></li>
@@ -351,16 +380,60 @@
 </ol>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
-<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>帮助：<a href="https://blog.csdn.net/eastmount/category_10243741.html">安全攻防进阶篇</a></p>
+<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>题目： <a href="https://crackmes.one/">crackmes</a><br>解答：<a href="https://www.cnblogs.com/lonenysky/p/11322353.html">逆向破解之160个CrackMe</a></p>
+<p>帮助：<br><a href="https://blog.csdn.net/eastmount/category_10243741.html">安全攻防进阶篇</a><br><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDM3NTM0NQ==&mid=2657043150&idx=1&sn=755afc0523ac4f6d85425bd7fa1a5e76">CTF逆向指南</a></p>
 <h2 id="安卓逆向"><a href="#安卓逆向" class="headerlink" title="安卓逆向"></a>安卓逆向</h2><p>dex文件<br>smali语法</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>安装pwntools<br>终端输入：pip install pwn</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
+
+<h1 id="Miscellaneous"><a href="#Miscellaneous" class="headerlink" title="Miscellaneous"></a>Miscellaneous</h1><p>流量分析、电子取证、人肉搜索、数据分析、图片隐写等等。</p>
+<p>常见题目类型与解答：<br><a href="https://www.freebuf.com/column/228957.html">CTF-MISC(编码篇)</a><br><a href="https://www.freebuf.com/articles/web/232141.html">CTF-MISC(隐写篇)</a></p>
+<p>帮助：<br><a href="https://ctf-wiki.org/misc/introduction/">CTF-Wiki 杂项简介</a><br><a href="https://www.cnblogs.com/sec-wuyy/p/14593000.html">Ctf之Misc 操作总结</a><br><a href="https://www.freebuf.com/sectool/282074.html">CTF MISC(杂项) 基本工具总结</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="杂项-1"><a href="#杂项-1" class="headerlink" title="杂项"></a>杂项</h2><h3 id="python漏洞"><a href="#python漏洞" class="headerlink" title="python漏洞"></a>python漏洞</h3><p>参考：<a href="https://blog.csdn.net/kelxLZ/article/details/111893448">Python开发常见漏洞</a></p>
 <h3 id="条件竞争"><a href="#条件竞争" class="headerlink" title="条件竞争"></a>条件竞争</h3><h4 id="TOCTTOU攻击"><a href="#TOCTTOU攻击" class="headerlink" title="TOCTTOU攻击"></a>TOCTTOU攻击</h4><p>参考：<a href="https://www.cnblogs.com/liqiuhao/p/9450093.html">关于TOCTTOU攻击的简介</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+
+<h2 id="DDOS攻击-Distributed-Denial-of-Service"><a href="#DDOS攻击-Distributed-Denial-of-Service" class="headerlink" title="DDOS攻击 (Distributed Denial of Service)"></a>DDOS攻击 (Distributed Denial of Service)</h2><h3 id="传统攻击"><a href="#传统攻击" class="headerlink" title="传统攻击"></a>传统攻击</h3><ol>
+<li><p>ICMP Flood<br>即Ping攻击</p>
+</li>
+<li><p>UDP Flood<br>用简单的TCP/IP服务，如Chargen和Echo来传送毫无用处的占满带宽的数据。通过伪造与某一主机的Chargen服务之间的一次的UDP连接，回复地址指向开着Echo服务的一台主机，这样就生成在两台主机之间的足够多的无用数据流</p>
+</li>
+<li><p>SYN Flood<br>TCP洪水攻击是当前最流行的DoS（拒绝服务攻击）与DDoS（分布式拒绝服务攻击）的方式之一，这是一种利用TCP协议缺陷，发送大量伪造的TCP连接请求，常用假冒的IP或IP号段发来海量的请求连接的第一个握手包（SYN包），被攻击服务器回应第二个握手包（SYN+ACK包），因为对方是假冒IP，对方永远收不到包且不会回应第三个握手包。导致被攻击服务器保持大量SYN_RECV状态的“半连接”，并且会重试默认5次回应第二个握手包，塞满TCP等待连接队列，资源耗尽(CPU满负荷或内存不足) <br /><br>防御:<br>SYN Cookie，但存在 ACK Flood 攻击缺陷<br>SYN Cache，会保存SYN包里面的所有的字段，这是SYN Cookie做不到的。<br>SYN Proxy，当一个TCP请求从客户端发出时，首先与该握手代理进行三次握手，其采用SYN Cookie技术，只有该请求通过cookie合法性校验，代理服务器才会与服务器进行真正的TCP三次握手。其缓解了ddos攻击，但攻击规模足够大就防御不住。<br /><br>参考：<a href="https://www.jianshu.com/p/c4fcecc2fd2e">SYN-Flood攻击解决办法？</a><br><a href="http://blog.chinaunix.net/uid-20357359-id-1963527.html">关于SYN Cookie和SYN Cache的再次讨论</a><br><a href="https://blog.csdn.net/pengzhouzhou/article/details/88422595">浅谈SYNPROXY</a></p>
+</li>
+<li><p>HTTP Flood ( CC攻击 )<br>HTTP Flood又称CC攻击(ChallengeCollapsar，挑战黑洞，是一个工具的名字)，是针对Web服务在第七层协议发起的攻击。通过向Web服务器发送大量HTTP请求来模仿网站访问者以耗尽其资源，尤其要请求那些导致复杂数据库查询等操作的资源。</p>
+</li>
+<li><p>ACK Flood<br>在TCP连接建立之后，所有的数据传输TCP报文都是带有ACK标志位的，主机在接收到一个带有ACK标志位的数据包的时候，需要检查该数据包所表示的连接四元组是否存在，如果存在则检查该数据包所表示的状态是否合法，然后再向应用层传递该数据包。如果在检查中发现该数据包不合法，例如该数据包所指向的目的端口在本机并未开放，则主机操作系统协议栈会回应RST包告诉对方此端口不存在。 <br /><br>目前ACK Flood并没有成为攻击的主流，而通常是与其他攻击方式组合在一起使用。回顾前面描述的SYN Cookie算法，其核心思想是主动回应SYN/ACK包，然后校验第3次握手的ACK报文是否合法，目前大多数实现中校验ACK报文的合法性都涉及到较为复杂的算法。当SYN Flood与ACK Flood一起发生的时候， 主机和防火墙将耗费大量的精力来计算ACK报文是否合法以致不堪重负。</p>
+</li>
+</ol>
+<h3 id="反射放大攻击-Distributed-Reflection-Denial-of-Service"><a href="#反射放大攻击-Distributed-Reflection-Denial-of-Service" class="headerlink" title="反射放大攻击 (Distributed Reflection Denial of Service)"></a>反射放大攻击 (Distributed Reflection Denial of Service)</h3><ol>
+<li>NTP Flood</li>
+<li>SSDP Flood</li>
+<li>DNS Flood</li>
+</ol>
+<h3 id="低速率拒绝服务攻击-low-rate-denial-of-service-简称LDoS"><a href="#低速率拒绝服务攻击-low-rate-denial-of-service-简称LDoS" class="headerlink" title="低速率拒绝服务攻击 (low-rate denial-of-service,简称LDoS)"></a>低速率拒绝服务攻击 (low-rate denial-of-service,简称LDoS)</h3><ol>
+<li>slowloris<br>HTTP Request以\r\n\r\n（0d0a0d0a）结尾表示客户端发送结束。攻击者在HTTP请求头中将Connection设置为Keep-Alive，要求Web Server保持TCP连接不要断开，随后缓慢地每隔几分钟发送一个key-value格式的数据到服务端，如a:b\r\n，但一直不发送\r\n\r\n，导致服务端认为HTTP头部没有接收完成</li>
+<li>Slow HTTP POST<br>在POST提交方式中，允许在HTTP的头中声明content-length，也就是POST内容的长度。<br>在提交了header并将content-length设置足够大以后，将后面的body部分卡住不发送，这时服务器在接受了POST长度以后，就会等待客户端发送POST的内容，攻击者保持连接并且以10S-100S一个字节的速度去发送，就达到了消耗资源的效果</li>
+<li>Slow Read attack<br>采用调整TCP协议中的滑动窗口大小，来对服务器单次发送的数据大小进行控制，使得服务器需要对一个回应分成很多个包来发送。</li>
+</ol>
+<p>参考：<a href="https://blog.csdn.net/qinyushuang/article/details/43274383">慢速连接攻击</a><br><a href="https://forum.huawei.com/enterprise/zh/forum.php?mod=viewthread&tid=367981">HTTP慢速攻击与防御</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+
 <h2 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h2><p>彩虹表抵御方法：加盐</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="水坑攻击"><a href="#水坑攻击" class="headerlink" title="水坑攻击"></a>水坑攻击</h2><p>“水坑攻击”，黑客攻击方式之一，顾名思义，是在受害者必经之路设置了一个“水坑(陷阱)”。最常见的做法是，黑客分析攻击目标的上网活动规律，寻找攻击目标经常访问的网站的弱点，先将此网站“攻破”并植入攻击代码，一旦攻击目标访问该网站就会“中招”。</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+
+<h2 id="鱼叉攻击"><a href="#鱼叉攻击" class="headerlink" title="鱼叉攻击"></a>鱼叉攻击</h2><p>只针对特定目标进行攻击的网络钓鱼攻击。</p>
+<p>利用木马程序作为电子邮件的附件，发送到目标电脑上，诱导受害者去打开附件来感染木马</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="漏洞记录"><a href="#漏洞记录" class="headerlink" title="漏洞记录"></a>漏洞记录</h1><p>按时间从新到旧排列<br>payload可以直接上GitHub上搜索</p>
@@ -380,19 +453,36 @@
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="密码学-1"><a href="#密码学-1" class="headerlink" title="密码学"></a>密码学</h1><p>对称加密和非对称加密<br>常见加密算法及其实现</p>
+<p>防御：</p>
+<ol>
+<li>对于彩虹表，可以加盐防御，盐要妥善保存在服务器的配置文件中。</li>
+</ol>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="安全工具使用和实现原理"><a href="#安全工具使用和实现原理" class="headerlink" title="安全工具使用和实现原理"></a>安全工具使用和实现原理</h1><h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>帮助：<a href="https://zing.gitbooks.io/kali-lunix/content/">Kali Linux 工具使用中文说明书</a></p>
-<h2 id="burp-suite"><a href="#burp-suite" class="headerlink" title="burp suite"></a>burp suite</h2><p>帮助：<a href="https://blog.csdn.net/weixin_44037296/article/details/102781785">Burp Suite中Intruder模块的使用详解</a></p>
-<h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h2><p>原理：<br><a href="https://iassas.com/archives/e409b646.html">SQLMap 原理分析 (一)</a><br><a href="https://iassas.com/archives/782ab1db.html">SQLMap 原理分析 (二)</a><br><a href="https://blog.csdn.net/somnuszhigang/article/details/103163942">sqlmap os-shell原理</a></p>
+<h2 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h2><p>帮助：<br><a href="https://t0data.gitbooks.io/burpsuite/content/chapter1.html">Burp Suite 指南</a><br><a href="https://blog.csdn.net/weixin_44037296/article/details/102781785">Burp Suite中Intruder模块的使用详解</a></p>
+<h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h2><p>使用：<br>sql -u “url” -r request.txt –data=”id=1” –cookie=”cookie” –level 3 –batch<br>–dbs                              枚举DBMS所有的数据库<br>–tables                          枚举DBMS数据库中所有的表<br>–columns                      枚举DBMS数据库表中所有的列<br>–count                         检索表的条目的数量<br>–dump                         存储DBMS数据库的表中的条目<br>–dump-all                     存储DBMS所有数据库表中的条目<br>–D db                          指定进行枚举的数据库名称<br>–T   table                     指定进行枚举的数据库表名称<br>–C   column                 指定进行枚举的数据库列名称</p>
+<p><a href="https://www.cnblogs.com/iAmSoScArEd/articles/9263735.html">sqlmap常用操作命令</a><br><a href="https://blog.csdn.net/smli_ng/article/details/106026901">sqlmap使用</a></p>
+<p>原理：<br><a href="https://iassas.com/archives/e409b646.html">SQLMap 原理分析 (一)</a><br><a href="https://iassas.com/archives/782ab1db.html">SQLMap 原理分析 (二)</a><br><a href="https://blog.csdn.net/somnuszhigang/article/details/103163942">sqlmap os-shell原理</a></p>
 <p>帮助：<br><a href="https://blog.csdn.net/qq_27446553/article/details/53291898">使用Sqlmap的你可能踩中了“蜜罐”</a><br><a href="https://blog.csdn.net/DaoDivDiFang/article/details/106899847">关于/dev/tcp/host/port</a></p>
 <h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><p>原理：<br><a href="https://blog.csdn.net/aspirationflow/article/details/7694274">Nmap扫描原理与用法</a></p>
+<p>另外，类似的工具有：<a href="https://zhuanlan.zhihu.com/p/257806472">masscan</a></p>
+<h2 id="AWVS"><a href="#AWVS" class="headerlink" title="AWVS"></a>AWVS</h2><p>待增加：awvs 如何批量扫描，或可参考：<a href="https://zhuanlan.zhihu.com/p/108065469">AWVS 批量添加目标扫描/删除任务脚本</a></p>
+<p>帮助：<br><a href="https://www.sqlsec.com/2020/04/awvs.html">AWVS13.X 破解版 Windows、Linux、Docker 安装</a><br><a href="https://cloud.tencent.com/developer/article/1480771">超详细版AWVS中文教程</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="其他安全工具"><a href="#其他安全工具" class="headerlink" title="其他安全工具"></a>其他安全工具</h2><h3 id="HttpCanary"><a href="#HttpCanary" class="headerlink" title="HttpCanary"></a>HttpCanary</h3><p>参考：<a href="https://cloud.tencent.com/developer/article/1858095">Android 抓包工具——HttpCanary</a></p>
+<h3 id="ssdeep"><a href="#ssdeep" class="headerlink" title="ssdeep"></a>ssdeep</h3><p>基于模糊哈希（Fuzzy Hashing）算法的工具。防御端通过搜集大量已知样本，制作样本库，使用ssdeep进行相似度比对，可快速发现入侵。<br>参考：<a href="https://cloud.tencent.com/developer/article/1366565">webshell指纹-ssdeep</a></p>
+<h3 id="安全狗"><a href="#安全狗" class="headerlink" title="安全狗"></a>安全狗</h3><hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="简单算法编程"><a href="#简单算法编程" class="headerlink" title="简单算法编程"></a>简单算法编程</h1><p>数据结构：数组、字符串、栈、堆、哈希表、二叉树、图等<br>算法：二分查找、广度/深度搜索、动态规划等</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="其他常见知识"><a href="#其他常见知识" class="headerlink" title="其他常见知识"></a>其他常见知识</h1><p><a href="https://blog.csdn.net/maoji/article/details/52798467">安全漏洞概念及分类</a><br><a href="https://blog.csdn.net/tryheart/article/details/106818422">网络安全常见面试题 - 对于某些攻击的防御方法等</a><br><a href="https://blog.csdn.net/Butterfly_resting/article/details/89638424">几率大的网络安全面试题</a><br><a href="https://cookie.blog.csdn.net/article/details/109019491">渗透测试面试问题合集</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="课外阅读"><a href="#课外阅读" class="headerlink" title="课外阅读"></a>课外阅读</h1><p><a href="https://zhuanlan.zhihu.com/p/54756592">一个Python开源项目-腾讯哈勃沙箱源码剖析(上)</a><br><a href="https://zhuanlan.zhihu.com/p/54756845">一个Python开源项目-腾讯哈勃沙箱源码剖析(下)</a></p>
+<p>Javascript 相关：<br><a href="https://introspelliam.github.io/2017/11/12/misc/CTF%E6%AF%94%E8%B5%9B%E4%B8%AD%E5%85%B3%E4%BA%8Ejavascript%E7%9A%84%E6%80%BB%E7%BB%93/">CTF比赛中关于javascript的总结</a><br><a href="https://www.freebuf.com/articles/system/163579.html">JavaScript反调试技巧</a><br><a href="https://www.jianshu.com/p/38c4afae636c">彻底搞定反调试之无限debugger</a><br><a href="https://blog.csdn.net/lacoucou/article/details/105426934">JS 反混淆</a></p>
 ]]></content>
       <categories>
         <category>security</category>

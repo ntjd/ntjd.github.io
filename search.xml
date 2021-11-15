@@ -504,4 +504,76 @@
         <tag>security</tag>
       </tags>
   </entry>
+  <entry>
+    <title>机器学习之神经网络深度学习初探</title>
+    <url>/2021/11/15/2021-11-16/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>BP(back propagation)神经网络是1986年由Rumelhart和McClelland为首的科学家提出的概念，是一种按照误差反向传播算法训练的多层前馈神经网络，是应用最广泛的神经网络模型之一。</p>
+<p>帮助：<br><a href="https://www.jianshu.com/p/7a85f1832951">神经网络算法</a><br><a href="https://blog.csdn.net/u014595019/article/details/52554582">深度学习笔记</a></p>
+<span id="more"></span>
+
+<h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><h2 id="多层前馈神经网络（multilayer-feedforward-neural-network）"><a href="#多层前馈神经网络（multilayer-feedforward-neural-network）" class="headerlink" title="多层前馈神经网络（multilayer feedforward neural network）"></a>多层前馈神经网络（multilayer feedforward neural network）</h2><p>由于多层前馈网络的训练经常采用误差反向传播算法，人们也常将多层前馈网络直接称为BP（Back Propagation）网。</p>
+<h2 id="后向传播"><a href="#后向传播" class="headerlink" title="后向传播"></a>后向传播</h2><p>从结构上讲，BP网络具有输入层、隐藏层和输出层；从本质上讲，BP算法就是以网络误差平方为目标函数、采用梯度下降法来计算目标函数的最小值</p>
+<p>参考：<a href="https://blog.csdn.net/ACM_hades/article/details/91049013">【深度学习】后向传播(BP)算法</a></p>
+<h3 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h3><p>梯度下降法的基本思想可以类比为一个下山的过程。<br>假设：一个人在山顶，需要从山上下到最低处。但下山的路径无法确定，需要利用自己周围的信息去找到下山的路径。<br>这时，以当前所处的位置为基准，寻找四周最陡峭的地方，然后朝最陡峭的地方走，每走一段距离，就再次寻找最陡峭的地方，继续朝最陡峭的地方走，如此反复，最后就能快速的下到山底。</p>
+<p>对于一个代表误差的函数，需要快速减小误差，使得误差最小，那么使用梯度下降法，不断朝着下降最剧烈的方向移动，最后能够到达一个函数图像局部最低点。</p>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/335191534">通俗易懂讲解梯度下降法</a></p>
+<h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>激活函数负责将神经元的输入映射到输出端。<br>引入激活函数是为了增加神经网络模型的非线性。没有激活函数的每层都相当于矩阵相乘。<br>激活函数有多种，如：Sigmoid函数、Tanh函数、ReLU(The Rectified Linear Unit)函数</p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/428448728">ReLU激活函数</a><br><a href="https://cloud.tencent.com/developer/article/1800954">深度学习领域最常用的10个激活函数</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="pytorch-的使用"><a href="#pytorch-的使用" class="headerlink" title="pytorch 的使用"></a>pytorch 的使用</h1><p>谷歌的 Tensorflow 与 Facebook 的 PyTorch 是颇受欢迎的两种深度学习框架。Tensorflow 的学习曲线比 PyTorch 更难一点，但学习资源可能相对更多。如果为了入门和快速上手，建议使用 pytorch 进行学习。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>进入<a href="https://pytorch.org/get-started/locally/">官网</a>，在表格中选择你电脑配置对应的 “Your OS、Package、Compute Platform” 等，随后底下会列出相应环境安装所需要使用的命令。</p>
+<p>如选择</p>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>选项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PyTorch Build</td>
+<td>Stable (1.10)</td>
+</tr>
+<tr>
+<td>Your OS</td>
+<td>Windows</td>
+</tr>
+<tr>
+<td>Package</td>
+<td>Pip</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>Compute Platform</td>
+<td>CPU</td>
+</tr>
+<tr>
+<td>Run this Command:</td>
+<td>pip3 install torch torchvision torchaudio</td>
+</tr>
+</tbody></table>
+<p>那么在终端输入给出的命令即可，建议拆开来分别下载，那样一个出问题不容易影响到别的，如下。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip3 install torch</span><br><span class="line">pip3 install torchvision</span><br><span class="line">pip3 install torchaudio</span><br></pre></td></tr></table></figure>
+<p>其中 torchvision 用于处理图像视频，torchvideo 处理音频，还有处理自然语言的 torchtext 等，根据需要斟酌选择。</p>
+<p>下载可能会很慢，这时如果给出的命令里有一个下载链接，可以点开链接，找到要下载的内容安装包，点击下载，在下载到本地后再次使用命令安装本地包。</p>
+<p>如上述选择的 Compute Platform 改成 CUDA 后， 给出的命令里会有个链接：<a href="https://download.pytorch.org/whl/cu113/torch_stable.html">https://download.pytorch.org/whl/cu113/torch_stable.html</a><br>在里面搜索你需要的内容，如果不知道要哪个安装包，终端直接输入官网原来给出的命令，下载提示里会有相应的包名。</p>
+<p>比如下载了 torch-1.10.0-cp37-cp37m-win_amd64.whl，那么本地安装时进入到相应目录，输入</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip3 install torch-1.10.0-cp37-cp37m-win_amd64.whl</span><br></pre></td></tr></table></figure>
+
+<p>注：torch 下载很慢，但其他包如 torchvision 等下载速度似乎快的多，可以安装 torch 后直接输入给定的命令下载。</p>
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><p>使用教程和基础概念参考：<a href="https://pytorch.apachecn.org/">PyTorch 中文教程 &amp; 文档</a></p>
+<p>PyTorch 和 Numpy 有一些关联，可以先适当了解一下 Numpy ，参考 <a href="https://www.numpy.org.cn/user/setting-up.html">NumPy 官方中文文档</a></p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>待补充</p>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>Machine Learning</tag>
+      </tags>
+  </entry>
 </search>

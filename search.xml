@@ -505,8 +505,92 @@
       </tags>
   </entry>
   <entry>
+    <title>AFL 简单介绍和使用</title>
+    <url>/2021/11/16/2021-11-16/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>AFL（American Fuzzy Lop）是由安全研究员Michał Zalewski 开发的一款基于覆盖引导（Coverage-guided）的模糊测试工具，AFL主要用于C/C++程序的测试。</p>
+<p>AFL 通过记录输入样本的代码覆盖率，不断对输入进行变异，从而达到更高的代码覆盖率，以增加发现漏洞的概率。AFL 采用新型的编译时插桩和<strong>遗传算法</strong>自动发现新的测试用例，这些用例会触发目标二进制文件中的新内部状态。这大大改善了模糊测试的代码覆盖范围。</p>
+<span id="more"></span>
+
+<h1 id="一、遗传算法（genetic-algorithm）"><a href="#一、遗传算法（genetic-algorithm）" class="headerlink" title="一、遗传算法（genetic algorithm）"></a>一、遗传算法（genetic algorithm）</h1><p>遗传算法是进化算法的一种。 进化算法最初是借鉴了进化生物学中的一些现象而发展起来的，这些现象包括遗传、突变、自然选择以及杂交等等。该算法通过编码将要求解的问题表示成遗传空间的染色体或者个体，将问题的求解过程转换成类似生物进化中的染色体基因的交叉、变异等过程。</p>
+<p>遗传算法借鉴适者生存理论，拥有一个适应度函数也叫评价函数，是用来判断群体中的个体的优劣程度的指标，它是根据所求问题的目标函数来进行评估的。</p>
+<p>遗传算法中初始群体中的个体是随机产生的。</p>
+<p>每次迭代，从群体中选择优胜的个体，淘汰劣质个体，把优化的个体(或解)直接遗传到下一代或通过配对交叉产生新的个体再遗传到下一代。遗传时会出现交叉和变异。交叉是指把两个父代个体的部分结构加以替换重组而生成新个体的操作。变异是对群体中的个体串的某些基因座上的基因值作变动。</p>
+<p>当最优个体的适应度达到给定的阈值，或者最优个体的适应度和群体适应度不再上升时，或者迭代次数达到预设的代数时，算法终止。预设的代数一般设置为100-500代。</p>
+<h1 id="二、AFL-的使用步骤"><a href="#二、AFL-的使用步骤" class="headerlink" title="二、AFL 的使用步骤"></a>二、AFL 的使用步骤</h1><h2 id="1-获取-AFL"><a href="#1-获取-AFL" class="headerlink" title="1. 获取 AFL"></a>1. 获取 AFL</h2><p>Linux下，终端键入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install afl</span><br></pre></td></tr></table></figure>
+
+<p>从 前 Google 安全研究员 lcamtuf 的个人网站上下载亦可：<br>进入 <a href="https://lcamtuf.coredump.cx/afl/releases/">https://lcamtuf.coredump.cx/afl/releases/</a>，下载并解压，输入make; make install 命令安装。<br>或终端输入命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz</span><br><span class="line">tar -zxvf afl-latest.tgz</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或其他文件夹名字</span></span><br><span class="line">cd afl-2.52b </span><br><span class="line"></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>GitHub 上下载亦可：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/google/AFL.git --depth=1</span><br><span class="line">cd afl</span><br><span class="line">make</span><br><span class="line">make install </span><br></pre></td></tr></table></figure>
+
+<p>安装之后，输入 afl-fuzz 进行验证。</p>
+<p>注：如果在 docker 中使用 AFL，在开启 container 时要加上 “—privileged” 选项，否则在执行某些命令时会报错。</p>
+<h2 id="2-测试前置工作"><a href="#2-测试前置工作" class="headerlink" title="2. 测试前置工作"></a>2. 测试前置工作</h2><h3 id="指示系统将-coredumps-输出为文件"><a href="#指示系统将-coredumps-输出为文件" class="headerlink" title="指示系统将 coredumps 输出为文件"></a>指示系统将 coredumps 输出为文件</h3><p>如果系统配置为将核心转储文件（core）通知发送到外部程序，将导致把崩溃信息发送到 Fuzzer 的延迟增大，进而可能将崩溃误报为超时。<br>故而，需要执行以下命令指示系统临时将 coredumps 输出为文件(重启后失效)：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo core &gt; /proc/sys/kernel/core_pattern</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3-白盒测试-有源码测试"><a href="#3-白盒测试-有源码测试" class="headerlink" title="3. 白盒测试(有源码测试)"></a>3. 白盒测试(有源码测试)</h2><h3 id="对测试内容进行插桩"><a href="#对测试内容进行插桩" class="headerlink" title="对测试内容进行插桩"></a>对测试内容进行插桩</h3><p>插桩技术指在保证原有程序逻辑完整性的基础上，在程序特定的位置插入代码段，从而收集程序运行时的上下文信息（方法本身、方法参数值、返回值等）。</p>
+<p>这里我们使用 afl-gcc 进行源码插桩编译。afl-gcc/afl-g++ 是 gcc/g++ 的包装，它们的用法基本一样，前者会将接收到的参数传递给后者，我们编译程序时只需要将 gcc 替换为 afl-gcc/afl-g++ 就行。<br>如，对于单个测试用例 test.c</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -g，产生符号调试工具（GNU的gdb）所必要的符号资讯，要想对源代码进行调试，我们就必须加入这个选项。</span></span><br><span class="line">afl-gcc -g test.c -o test</span><br></pre></td></tr></table></figure>
+<p>对于一个项目进行插桩编译，参考：<a href="https://www.freebuf.com/articles/system/191543.html">AFL漏洞挖掘技术漫谈 之 第五点：构建被测试程序</a></p>
+<p>如果使用 LLVM 模式进行源码插桩，可以更快的进行 Fuzz，安装 AFL 时可根据需要选择安装 LLVM：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install clang</span><br><span class="line">sudo apt-get install llvm</span><br></pre></td></tr></table></figure>
+<h3 id="选择初始语料库"><a href="#选择初始语料库" class="headerlink" title="选择初始语料库"></a>选择初始语料库</h3><p>AFL需要一些初始输入数据（也叫种子文件）作为 Fuzzing 的起点，就像遗传算法中的初始群体，这些输入甚至可以是毫无意义的数据。</p>
+<p>可以从网上找语料库，<a href="https://www.freebuf.com/articles/system/191543.html">AFL漏洞挖掘技术漫谈 之 第四点：构建语料库</a> 中列出了一些语料库。</p>
+<p>也可以自己随便建个文件输入一些字符串，比如 “Hello world” ，虽然有时效率不高，但对简单测试还是能用的。</p>
+<h3 id="精简语料库"><a href="#精简语料库" class="headerlink" title="精简语料库"></a>精简语料库</h3><p>一般是当所有文件都用 tmin 处理完后，再利用 cmin 工具处理一次，从而达到最精简。</p>
+<h4 id="AFL-TMIN"><a href="#AFL-TMIN" class="headerlink" title="AFL-TMIN"></a>AFL-TMIN</h4><p>AFL-TMIN 工具可以把我们提供的单个文件放到经过 afl 编译好的程序里执行，然后再按一定方式进行精简，从而缩减该测试用例的大小。它减小单个输入文件的大小，作用单位是单个文件。</p>
+<p>命令：</p>
+<blockquote>
+<p>afl-tmin -i 需要精简的文件 -o 精简后的文件 测试程序</p>
+</blockquote>
+<p>afl-tmin有两种工作模式，instrumented mode和crash mode。<br>默认的工作方式是 instrumented mode，如果指定了参数 -x，就会调用 crash mode 模式，会把导致程序非正常退出的文件直接剔除。</p>
+<h4 id="AFL-CMIN"><a href="#AFL-CMIN" class="headerlink" title="AFL-CMIN"></a>AFL-CMIN</h4><p>AFL-CMIN 是移除覆盖了相同的代码的输入文件，作用单位是一堆文件。</p>
+<p>命令：</p>
+<blockquote>
+<p>afl-cmin -i 测试输入文件的文件夹 -o 筛选后的输入文件的文件夹 测试程序</p>
+</blockquote>
+<p>afl-cmin是每次用一个文件跟之前的比较，如果能达到上一个的效果，就替换掉上一个文件，因此至少会留下一个具有相同效果的文件。</p>
+<h3 id="运行-AFL"><a href="#运行-AFL" class="headerlink" title="运行 AFL"></a>运行 AFL</h3><p>afl-showmap 工具用于跟踪单个输入用例的执行路径，可以进行最简单的实验。</p>
+<p>而 afl-fuzz 用法如下：</p>
+<blockquote>
+<p>afl-fuzz -i 输入文件的文件夹 -o 输出文件夹 测试程序</p>
+</blockquote>
+<p>如果进入一个状态窗口，就表明已经开始 Fuzzing 了。以下是一些状态含义：</p>
+<ol>
+<li>process timing：Fuzzer运行时长、以及距离最近发现的路径、崩溃和挂起经过了多长时间。</li>
+<li>overall results：Fuzzer当前状态的概述。</li>
+<li>cycle progress：我们输入队列的距离。</li>
+<li>map coverage：目标二进制文件中的插桩代码所观察到覆盖范围的细节。</li>
+<li>stage progress：Fuzzer现在正在执行的文件变异策略、执行次数和执行速度。</li>
+<li>findings in depth：有关我们找到的执行路径，异常和挂起数量的信息。</li>
+<li>fuzzing strategy yields：关于突变策略产生的最新行为和结果的详细信息。</li>
+<li>path geometry：有关Fuzzer找到的执行路径的信息。</li>
+<li>CPU ：CPU利用率</li>
+</ol>
+<h3 id="查看结果"><a href="#查看结果" class="headerlink" title="查看结果"></a>查看结果</h3><p>查看输出文件夹，通常里面有三个文件夹：</p>
+<p>Crashes文件夹：包含导致测试程序接收致命信号的测试用例，进入 crashes 可以看到触发得到的 crash，递增序列号代表每一个具有独特执行路径的测试用例。<br>分别查看各个 crash 样例，可以输入:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">xxd 文件名</span><br></pre></td></tr></table></figure>
+
+<p>hangs：包含导致测试程序超时的测试用例。</p>
+<p>queue：包含每个独特执行路径的测试用例，以及用户给出的所有起始文件。</p>
+<h2 id="4-黑盒测试-对二进制文件测试"><a href="#4-黑盒测试-对二进制文件测试" class="headerlink" title="4. 黑盒测试(对二进制文件测试)"></a>4. 黑盒测试(对二进制文件测试)</h2><p>使用 AFL 的 QEMU 模式。待补充。</p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/90037601">从AFL开始FUZZ之旅</a><br><a href="https://www.freebuf.com/articles/system/191543.html">AFL漏洞挖掘技术漫谈（一）：用AFL开始你的第一次Fuzzing</a><br><a href="https://blog.csdn.net/song_lee/article/details/104777149">经典 Fuzzer 工具 AFL 模糊测试指南</a><br><a href="https://bbs.pediy.com/thread-257399.htm">AFL学习笔记（上）</a></p>
+]]></content>
+      <categories>
+        <category>security</category>
+        <category>fuzz</category>
+      </categories>
+      <tags>
+        <tag>security</tag>
+        <tag>fuzz</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>机器学习之神经网络深度学习初探</title>
-    <url>/2021/11/15/2021-11-16/</url>
+    <url>/2021/11/15/2021-11-15/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>BP(back propagation)神经网络是1986年由Rumelhart和McClelland为首的科学家提出的概念，是一种按照误差反向传播算法训练的多层前馈神经网络，是应用最广泛的神经网络模型之一。</p>
 <p>帮助：<br><a href="https://www.jianshu.com/p/7a85f1832951">神经网络算法</a><br><a href="https://blog.csdn.net/u014595019/article/details/52554582">深度学习笔记</a></p>
 <span id="more"></span>

@@ -28,9 +28,10 @@
 <meta property="og:description" content="前言BP(back propagation)神经网络是1986年由Rumelhart和McClelland为首的科学家提出的概念，是一种按照误差反向传播算法训练的多层前馈神经网络，是应用最广泛的神经网络模型之一。 帮助：神经网络算法深度学习笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-15T17:40:38.000Z">
-<meta property="article:modified_time" content="2021-11-15T17:55:04.066Z">
+<meta property="article:modified_time" content="2021-11-21T20:52:07.687Z">
 <meta property="article:author" content="Kevin Cai">
 <meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Deep learning">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://ntjd.github.io/2021/11/15/2021-11-15/">
@@ -217,10 +218,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-11-15 12:40:38 / 修改时间：12:55:04" itemprop="dateCreated datePublished" datetime="2021-11-15T12:40:38-05:00">2021-11-15</time>
+              <time title="创建时间：2021-11-15 12:40:38" itemprop="dateCreated datePublished" datetime="2021-11-15T12:40:38-05:00">2021-11-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-21 15:52:07" itemprop="dateModified" datetime="2021-11-21T15:52:07-05:00">2021-11-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -228,6 +235,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Deep-learning/" itemprop="url" rel="index"><span itemprop="name">Deep learning</span></a>
                 </span>
             </span>
 
@@ -256,7 +267,11 @@
 <p>参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/428448728">ReLU激活函数</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1800954">深度学习领域最常用的10个激活函数</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
+<h1 id="深度学习的几种方法"><a href="#深度学习的几种方法" class="headerlink" title="深度学习的几种方法"></a>深度学习的几种方法</h1><h2 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h2><p>参考：<a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/cnn/">卷积神经网络 – CNN 介绍</a></p>
+<h2 id="生成对抗网络-–-GANs"><a href="#生成对抗网络-–-GANs" class="headerlink" title="生成对抗网络 – GANs"></a>生成对抗网络 – GANs</h2><p>参考：<a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/gan/">生成对抗网络 – Generative Adversarial Networks | GAN</a></p>
+<h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p>参考：<a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/reinforcement-learning/">强化学习-Reinforcement learning | RL</a></p>
 <h1 id="pytorch-的使用"><a href="#pytorch-的使用" class="headerlink" title="pytorch 的使用"></a>pytorch 的使用</h1><p>谷歌的 Tensorflow 与 Facebook 的 PyTorch 是颇受欢迎的两种深度学习框架。Tensorflow 的学习曲线比 PyTorch 更难一点，但学习资源可能相对更多。如果为了入门和快速上手，建议使用 pytorch 进行学习。</p>
+<p>帮助：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/nickchen121/p/14662511.html">PyTorch从入门到放弃（目录）</a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>进入<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">官网</a>，在表格中选择你电脑配置对应的 “Your OS、Package、Compute Platform” 等，随后底下会列出相应环境安装所需要使用的命令。</p>
 <p>如选择</p>
 <table>
@@ -299,10 +314,16 @@
 <p>比如下载了 torch-1.10.0-cp37-cp37m-win_amd64.whl，那么本地安装时进入到相应目录，输入</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install torch-1.10.0-cp37-cp37m-win_amd64.whl</span><br></pre></td></tr></table></figure>
 
-<p>注：torch 下载很慢，但其他包如 torchvision 等下载速度似乎快的多，可以安装 torch 后直接输入给定的命令下载。</p>
+<p>注：torch 原来的源下载很慢，但其他包如 torchvision 等下载速度似乎快的多，可以安装 torch 后直接输入给定的命令下载，或者直接换源下载，pip install torch -i <a target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/pypi/simple">https://mirrors.cloud.tencent.com/pypi/simple</a></p>
 <h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><p>使用教程和基础概念参考：<a target="_blank" rel="noopener" href="https://pytorch.apachecn.org/">PyTorch 中文教程 &amp; 文档</a></p>
 <p>PyTorch 和 Numpy 有一些关联，可以先适当了解一下 Numpy ，参考 <a target="_blank" rel="noopener" href="https://www.numpy.org.cn/user/setting-up.html">NumPy 官方中文文档</a></p>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>待补充</p>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>如果没有服务器，也可以考虑百度的 paddle 平台，不过需要重新学习它的框架，有学习成本：<br><a target="_blank" rel="noopener" href="https://www.paddlepaddle.org.cn/">开源深度学习平台飞桨</a></p>
+<p>可以答题获得试用算力：<br><a target="_blank" rel="noopener" href="https://aistudio.baidu.com/aistudio/learnmap">飞桨AI Studio - 人工智能学习实训社区</a></p>
+<p>也购买云服务器。</p>
+<h1 id="课外阅读"><a href="#课外阅读" class="headerlink" title="课外阅读"></a>课外阅读</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010177286/article/details/79304778">机器学习基本概念知识汇</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/290011942">样本量极少如何机器学习？</a>：通过将有限的监督信息（小样本）与先验知识（无标记或弱标记样本、其他数据集和标签、其他模型等）结合，使得模型可以有效的学习小样本中的信息。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44211968/article/details/121314757">【机器学习】Few-shot learning（少样本学习）</a></p>
 
     </div>
 
@@ -313,6 +334,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Deep-learning/" rel="tag"># Deep learning</a>
           </div>
 
         
@@ -386,7 +408,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">概念介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%B1%82%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88multilayer-feedforward-neural-network%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">多层前馈神经网络（multilayer feedforward neural network）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-number">2.2.</span> <span class="nav-text">后向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">梯度下降法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">激活函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pytorch-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">pytorch 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">使用教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">3.3.</span> <span class="nav-text">案例</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">概念介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%B1%82%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88multilayer-feedforward-neural-network%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">多层前馈神经网络（multilayer feedforward neural network）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-number">2.2.</span> <span class="nav-text">后向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">梯度下降法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">激活函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">深度学习的几种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">3.1.</span> <span class="nav-text">卷积神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C-%E2%80%93-GANs"><span class="nav-number">3.2.</span> <span class="nav-text">生成对抗网络 – GANs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">3.3.</span> <span class="nav-text">强化学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pytorch-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">pytorch 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">使用教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">4.3.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">4.4.</span> <span class="nav-text">服务器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E5%A4%96%E9%98%85%E8%AF%BB"><span class="nav-number">5.</span> <span class="nav-text">课外阅读</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -400,20 +422,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

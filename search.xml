@@ -627,7 +627,11 @@
 <p>参考：<br><a href="https://zhuanlan.zhihu.com/p/428448728">ReLU激活函数</a><br><a href="https://cloud.tencent.com/developer/article/1800954">深度学习领域最常用的10个激活函数</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
+<h1 id="深度学习的几种方法"><a href="#深度学习的几种方法" class="headerlink" title="深度学习的几种方法"></a>深度学习的几种方法</h1><h2 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h2><p>参考：<a href="https://easyai.tech/ai-definition/cnn/">卷积神经网络 – CNN 介绍</a></p>
+<h2 id="生成对抗网络-–-GANs"><a href="#生成对抗网络-–-GANs" class="headerlink" title="生成对抗网络 – GANs"></a>生成对抗网络 – GANs</h2><p>参考：<a href="https://easyai.tech/ai-definition/gan/">生成对抗网络 – Generative Adversarial Networks | GAN</a></p>
+<h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p>参考：<a href="https://easyai.tech/ai-definition/reinforcement-learning/">强化学习-Reinforcement learning | RL</a></p>
 <h1 id="pytorch-的使用"><a href="#pytorch-的使用" class="headerlink" title="pytorch 的使用"></a>pytorch 的使用</h1><p>谷歌的 Tensorflow 与 Facebook 的 PyTorch 是颇受欢迎的两种深度学习框架。Tensorflow 的学习曲线比 PyTorch 更难一点，但学习资源可能相对更多。如果为了入门和快速上手，建议使用 pytorch 进行学习。</p>
+<p>帮助：<a href="https://www.cnblogs.com/nickchen121/p/14662511.html">PyTorch从入门到放弃（目录）</a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>进入<a href="https://pytorch.org/get-started/locally/">官网</a>，在表格中选择你电脑配置对应的 “Your OS、Package、Compute Platform” 等，随后底下会列出相应环境安装所需要使用的命令。</p>
 <p>如选择</p>
 <table>
@@ -670,16 +674,44 @@
 <p>比如下载了 torch-1.10.0-cp37-cp37m-win_amd64.whl，那么本地安装时进入到相应目录，输入</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip3 install torch-1.10.0-cp37-cp37m-win_amd64.whl</span><br></pre></td></tr></table></figure>
 
-<p>注：torch 下载很慢，但其他包如 torchvision 等下载速度似乎快的多，可以安装 torch 后直接输入给定的命令下载。</p>
+<p>注：torch 原来的源下载很慢，但其他包如 torchvision 等下载速度似乎快的多，可以安装 torch 后直接输入给定的命令下载，或者直接换源下载，pip install torch -i <a href="https://mirrors.cloud.tencent.com/pypi/simple">https://mirrors.cloud.tencent.com/pypi/simple</a></p>
 <h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><p>使用教程和基础概念参考：<a href="https://pytorch.apachecn.org/">PyTorch 中文教程 &amp; 文档</a></p>
 <p>PyTorch 和 Numpy 有一些关联，可以先适当了解一下 Numpy ，参考 <a href="https://www.numpy.org.cn/user/setting-up.html">NumPy 官方中文文档</a></p>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>待补充</p>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>如果没有服务器，也可以考虑百度的 paddle 平台，不过需要重新学习它的框架，有学习成本：<br><a href="https://www.paddlepaddle.org.cn/">开源深度学习平台飞桨</a></p>
+<p>可以答题获得试用算力：<br><a href="https://aistudio.baidu.com/aistudio/learnmap">飞桨AI Studio - 人工智能学习实训社区</a></p>
+<p>也购买云服务器。</p>
+<h1 id="课外阅读"><a href="#课外阅读" class="headerlink" title="课外阅读"></a>课外阅读</h1><p><a href="https://blog.csdn.net/u010177286/article/details/79304778">机器学习基本概念知识汇</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/290011942">样本量极少如何机器学习？</a>：通过将有限的监督信息（小样本）与先验知识（无标记或弱标记样本、其他数据集和标签、其他模型等）结合，使得模型可以有效的学习小样本中的信息。</p>
+<p><a href="https://blog.csdn.net/weixin_44211968/article/details/121314757">【机器学习】Few-shot learning（少样本学习）</a></p>
 ]]></content>
       <categories>
         <category>Machine Learning</category>
+        <category>Deep learning</category>
       </categories>
       <tags>
         <tag>Machine Learning</tag>
+        <tag>Deep learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习与数据挖掘初探</title>
+    <url>/2021/11/21/2021-11-22/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>帮助：<br><a href="https://easyai.tech/ai-definition">AI 知识库</a><br><a href="https://wizardforcel.gitbooks.io/dm-algo-top10/content/index.html">数据挖掘十大算法详解</a></p>
+<span id="more"></span>
+
+<h1 id="sklearn"><a href="#sklearn" class="headerlink" title="sklearn"></a>sklearn</h1><p>sklearn (scikit-learn) 是基于 Python 语言的机器学习工具</p>
+<p>帮助：<br><a href="https://sklearn.apachecn.org/">scikit-learn (sklearn) 官方文档中文版</a><br><a href="https://blog.csdn.net/algorithmPro/article/details/103045824">sklearn介绍</a></p>
+<h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><p>实现样例参考：<a href="https://blog.csdn.net/moriarty_jack/article/details/108432867">sklearn SVM原理与实现</a></p>
+<h1 id="课外阅读"><a href="#课外阅读" class="headerlink" title="课外阅读"></a>课外阅读</h1><p><a href="https://www.cnblogs.com/jinxulin/p/3511298.html">什么是增强学习（Reinforcement Learning）</a></p>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+        <category>Data mining</category>
+      </categories>
+      <tags>
+        <tag>Machine Learning</tag>
+        <tag>Data mining</tag>
       </tags>
   </entry>
 </search>

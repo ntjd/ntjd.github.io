@@ -46,7 +46,9 @@
 <li>vim显示行号：” :set nu “ (其他vim操作参考<a href="https://www.runoob.com/linux/linux-vim.html">Linux vi/vim | 菜鸟教程</a>)</li>
 <li>ssh远程连接：ssh -l 用户名 -p 端口 地址 或 ssh 用户名@地址 -p 端口（参考：<a href="https://cloud.tencent.com/developer/article/1594881">ssh 命令</a>）</li>
 <li>curl命令使用：curl -X POST -d ‘param1=hello&amp;param2=world’ URL（参考：<a href="https://blog.csdn.net/wuhuagu_wuhuaguo/article/details/90764856">Linux curl命令最全详解</a>）</li>
+<li>避免远程连接 Linux 关闭终端后程序终止，参考：<a href="https://blog.csdn.net/qq_34243930/article/details/106771285">Linux–screen 命令，远程必备</a></li>
 <li>安装kali工具：<a href="https://cloud.tencent.com/developer/article/1035313">Kali Linux metapackages 工具包</a></li>
+<li>其他工具可参考：<a href="https://zing.gitbooks.io/kali-lunix/content/">Kali Linux 工具使用中文说明书</a></li>
 </ol>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
@@ -105,7 +107,7 @@
 <ul>
 <li><p><strong>方法一</strong>：<br>终端输入：sudo apt-get install python3-pip<br>安装后终端直接输入：pip 或 pip3 即可使用<br>注意，已经安装pip2的要输入pip3 -V 查看版本验证，似乎有人安装后仍是pip2，pip3没有被真正安装。如：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">root@kali:~# pip3 -V</span><br><span class="line">pip 19.3.1 from /usr/local/lib/python2.7/dist-packages/pip-19.3.1-py2.7.egg/pip (python 2.7)</span><br></pre></td></tr></table></figure>
-<p>正常情况可能是这样：</p>
+<p>正常情况应该类似于：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line">└─$ pip3 -V</span><br><span class="line">pip 21.2.4 from /home/kali/.local/lib/python3.9/site-packages/pip (python 3.9)</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/kali]</span><br><span class="line">└─# pip3 -V</span><br><span class="line">pip 20.3.4 from /usr/lib/python3/dist-packages/pip (python 3.9)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 <li><p><strong>方法二</strong>，此方法需解决环境变量问题<br>终端输入：<br>curl -s <a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a> | python3<br>安装完不能直接在终端输入pip来使用，但是可以在 ~/.local/bin 中找到pip，并可在此目录下输入 ./pip 或 ./pip3 来使用。</p>
@@ -185,13 +187,27 @@
 <p>docker使用方法可参考：<br><a href="https://vuepress.mirror.docker-practice.com/introduction/">Docker — 从入门到实践</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
-<h2 id="全球互联网"><a href="#全球互联网" class="headerlink" title="全球互联网"></a>全球互联网</h2><p>GitHub上的软件或一些浏览器插件，不好详细说明，可参考其他教程。</p>
+<h2 id="全球互联网"><a href="#全球互联网" class="headerlink" title="全球互联网"></a>全球互联网</h2><p>GitHub上的软件或一些浏览器插件，由于审核机制无法详细说明，可参考其他教程。</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h2 id="蚁剑安装和使用"><a href="#蚁剑安装和使用" class="headerlink" title="蚁剑安装和使用"></a>蚁剑安装和使用</h2><p>参考：<br><a href="https://doc.u0u.us/zh-hans/getting_started/get_antsword.html">https://doc.u0u.us/zh-hans/getting_started/get_antsword.html</a><br><a href="https://www.yuque.com/antswordproject/antsword/srruro">https://www.yuque.com/antswordproject/antsword/srruro</a></p>
 <p>下载Linux 64位版本加载器：<a href="https://github.com/AntSwordProject/AntSword-Loader">https://github.com/AntSwordProject/AntSword-Loader</a></p>
 <p>解压，进入文件夹输入./AntSword运行，选择一个空目录下载存放蚁剑源代码，介绍和使用方法请看参考链接</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h2 id="dirsearch-目录爆破工具安装"><a href="#dirsearch-目录爆破工具安装" class="headerlink" title="dirsearch 目录爆破工具安装"></a>dirsearch 目录爆破工具安装</h2><p>参考：<br><a href="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a></p>
+<p><strong>方法一</strong>：<br>终端输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install dirsearch</span><br></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<blockquote>
+<p>dirsearch -u &lt;URL&gt; -e &lt;EXTENSIONS&gt;</p>
+</blockquote>
+<p>举例如：</p>
+<blockquote>
+<p>dirsearch -u <a href="https://www.baidu.com/">https://www.baidu.com/</a> -e js,php</p>
+</blockquote>
+<p><strong>方法二</strong>：<br>终端输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/maurosoria/dirsearch.git</span><br><span class="line">cd dirsearch</span><br><span class="line">pip3 install -r requirements.txt</span><br><span class="line">python3 dirsearch.py -u &lt;URL&gt; -e &lt;EXTENSIONS&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="burpsuit换成专业版"><a href="#burpsuit换成专业版" class="headerlink" title="burpsuit换成专业版"></a>burpsuit换成专业版</h2><p>参考：<br><a href="https://www.cnblogs.com/yeblade/p/14266385.html">kali安装专业版burpsuite - 2021年</a><br><a href="https://blog.csdn.net/Richard_qi/article/details/104663060">kali安装BurpSuite pro版(小白笔记) - 2020年</a><br><a href="https://blog.csdn.net/HACKETTx/article/details/103786249">Kali 安装Burpsuite Pro - 2019年</a><br>自带的burpsuit是社区版，换成专业版更强大。<br>笔者尚未尝试此操作，可以参考上面的链接教程。<br>其中第一个链接教程中注册机的下载地址是：<a href="https://www.lanzoui.com/iJmSJkavl2j">https://www.lanzoui.com/iJmSJkavl2j</a>，似乎打错了。</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
@@ -372,9 +388,13 @@
 <h3 id="数据库提权"><a href="#数据库提权" class="headerlink" title="数据库提权"></a>数据库提权</h3><p>UDF</p>
 <p>帮助：<a href="https://blog.csdn.net/l1028386804/article/details/85768994">渗透之数据库提权</a></p>
 <h3 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h3><p>帮助：<a href="https://www.secpulse.com/archives/132643.html">内网渗透之内网穿透</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
 <h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><h3 id="XXE-XML外部实体注入漏洞-XML-External-Entity-injection"><a href="#XXE-XML外部实体注入漏洞-XML-External-Entity-injection" class="headerlink" title="XXE XML外部实体注入漏洞(XML External Entity injection)"></a>XXE XML外部实体注入漏洞(XML External Entity injection)</h3><p>帮助：<a href="https://www.freebuf.com/articles/web/177979.html">XXE漏洞利用技巧：从XML到远程代码执行</a></p>
 <h3 id="CSV注入-CSV-Injection"><a href="#CSV注入-CSV-Injection" class="headerlink" title="CSV注入(CSV Injection)"></a>CSV注入(CSV Injection)</h3><p>帮助：<a href="https://blog.csdn.net/weixin_41924764/article/details/108665746">CSV注入漏洞原理及利用教程</a></p>
 <h3 id="CRLF-注入"><a href="#CRLF-注入" class="headerlink" title="CRLF 注入"></a>CRLF 注入</h3><p>帮助：<br><a href="https://www.freebuf.com/articles/web/283959.html">CRLF、CSRF、SSRF攻击与利用</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
 <h2 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h2><p>题目：</p>
 <ol>
 <li><a href="https://buuoj.cn/challenges#Webug%204.0">BUU - Webug 4.0</a><br>解答：<br><a href="https://blog.csdn.net/weixin_41924764/article/details/107548754">webug4.0通关笔记</a><br><a href="https://www.jianshu.com/p/26d204ecaf69">webug4.0 第一关到第三十关笔记</a><br><a href="https://blog.csdn.net/qq_32434307/article/details/79480036">Nginx中的解析漏洞</a></li>
@@ -386,22 +406,25 @@
 <h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>题目： <a href="https://crackmes.one/">crackmes</a><br>解答：<a href="https://www.cnblogs.com/lonenysky/p/11322353.html">逆向破解之160个CrackMe</a></p>
 <p>帮助：<br><a href="https://blog.csdn.net/eastmount/category_10243741.html">安全攻防进阶篇</a><br><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDM3NTM0NQ==&mid=2657043150&idx=1&sn=755afc0523ac4f6d85425bd7fa1a5e76">CTF逆向指南</a></p>
 <h2 id="安卓逆向"><a href="#安卓逆向" class="headerlink" title="安卓逆向"></a>安卓逆向</h2><p>dex文件<br>smali语法</p>
+<h2 id="PYTHON-逆向"><a href="#PYTHON-逆向" class="headerlink" title="PYTHON 逆向"></a>PYTHON 逆向</h2><p>使用工具 PyInstaller Extractor ( pyinstxtractor ) 和 python-uncompyle6。PyInstaller Extractor 可以把 PyInstaller 解包成 pyc 文件，而 uncompyle6 可以把 pyc 的字节码反编译回 python 的代码。</p>
+<p>如果选择在线的 pyc 反编译网站，如 <a href="https://tool.lu/pyc/">https://tool.lu/pyc/</a>，有概率出现精度问题。</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>安装 pwntools<br>终端输入：pip install pwn</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
-
 <h1 id="Miscellaneous"><a href="#Miscellaneous" class="headerlink" title="Miscellaneous"></a>Miscellaneous</h1><p>流量分析、电子取证、人肉搜索、数据分析、图片隐写等等。</p>
 <p>常见题目类型与解答：<br><a href="https://www.freebuf.com/column/228957.html">CTF-MISC(编码篇)</a><br><a href="https://www.freebuf.com/articles/web/232141.html">CTF-MISC(隐写篇)</a></p>
 <p>帮助：<br><a href="https://ctf-wiki.org/misc/introduction/">CTF-Wiki 杂项简介</a><br><a href="https://www.cnblogs.com/sec-wuyy/p/14593000.html">Ctf之Misc 操作总结</a><br><a href="https://www.freebuf.com/sectool/282074.html">CTF MISC(杂项) 基本工具总结</a></p>
 <h2 id="社会工程学"><a href="#社会工程学" class="headerlink" title="社会工程学"></a>社会工程学</h2><p>帮助：<a href="https://www.anquanke.com/post/id/164831">图片信息挖掘示例</a></p>
+<h2 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h2><p>tea 加密（Tiny Encryption Algorithm，TEA），ctf 中常见的微型加密算法，使用了一个常数作为倍数，源于黄金比率，程序中一般写作 0x9E3779B9 。但有时该常数会以减法的形式出现，-0x61C88647 = 0x9E3779B9，因此题目出现了 0x61C88647 该常数时也应当注意。<br>参考：<a href="https://blog.csdn.net/A951860555/article/details/120073984">tea系列加密算法学习笔记</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="零散知识"><a href="#零散知识" class="headerlink" title="零散知识"></a>零散知识</h2><p><a href="https://blog.csdn.net/kelxLZ/article/details/111893448">Python开发常见漏洞</a><br><a href="https://www.cnblogs.com/echojson/p/12805102.html">什么是会话固定攻击？</a><br><a href="https://blog.csdn.net/JieDG/article/details/106106680">信息收集之——旁站、C段</a></p>
-<h3 id="条件竞争"><a href="#条件竞争" class="headerlink" title="条件竞争"></a>条件竞争</h3><h4 id="TOCTTOU攻击"><a href="#TOCTTOU攻击" class="headerlink" title="TOCTTOU攻击"></a>TOCTTOU攻击</h4><p>参考：<a href="https://www.cnblogs.com/liqiuhao/p/9450093.html">关于TOCTTOU攻击的简介</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
+<h3 id="条件竞争"><a href="#条件竞争" class="headerlink" title="条件竞争"></a>条件竞争</h3><h4 id="TOCTTOU攻击"><a href="#TOCTTOU攻击" class="headerlink" title="TOCTTOU攻击"></a>TOCTTOU攻击</h4><p>参考：<a href="https://www.cnblogs.com/liqiuhao/p/9450093.html">关于TOCTTOU攻击的简介</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h2 id="DDOS攻击-Distributed-Denial-of-Service"><a href="#DDOS攻击-Distributed-Denial-of-Service" class="headerlink" title="DDOS攻击 (Distributed Denial of Service)"></a>DDOS攻击 (Distributed Denial of Service)</h2><h3 id="传统攻击"><a href="#传统攻击" class="headerlink" title="传统攻击"></a>传统攻击</h3><ol>
 <li><p>ICMP Flood<br>即Ping攻击</p>
@@ -426,10 +449,6 @@
 <li>Slow Read attack<br>采用调整TCP协议中的滑动窗口大小，来对服务器单次发送的数据大小进行控制，使得服务器需要对一个回应分成很多个包来发送。</li>
 </ol>
 <p>参考：<a href="https://blog.csdn.net/qinyushuang/article/details/43274383">慢速连接攻击</a><br><a href="https://forum.huawei.com/enterprise/zh/forum.php?mod=viewthread&tid=367981">HTTP慢速攻击与防御</a></p>
-<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
-
-
-<h2 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h2><p>彩虹表抵御方法：加盐</p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 
@@ -466,6 +485,7 @@
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
 <h1 id="密码学-1"><a href="#密码学-1" class="headerlink" title="密码学"></a>密码学</h1><p>对称加密和非对称加密<br>常见加密算法及其实现</p>
+<p>线性同余法：一种经典的产生伪随机数的方法</p>
 <p>防御：</p>
 <ol>
 <li>对于彩虹表，可以加盐防御，盐要妥善保存在服务器的配置文件中。</li>
@@ -478,10 +498,13 @@
 <p><a href="https://www.cnblogs.com/iAmSoScArEd/articles/9263735.html">sqlmap常用操作命令</a><br><a href="https://blog.csdn.net/smli_ng/article/details/106026901">sqlmap使用</a></p>
 <p>原理：<br><a href="https://iassas.com/archives/e409b646.html">SQLMap 原理分析 (一)</a><br><a href="https://iassas.com/archives/782ab1db.html">SQLMap 原理分析 (二)</a><br><a href="https://blog.csdn.net/somnuszhigang/article/details/103163942">sqlmap os-shell原理</a></p>
 <p>课外阅读：<br><a href="https://blog.csdn.net/qq_27446553/article/details/53291898">使用Sqlmap的你可能踩中了“蜜罐”</a><br><a href="https://blog.csdn.net/DaoDivDiFang/article/details/106899847">关于/dev/tcp/host/port</a></p>
-<h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><p>原理：<br><a href="https://blog.csdn.net/aspirationflow/article/details/7694274">Nmap扫描原理与用法</a></p>
-<p>另外，类似的工具有：<a href="https://zhuanlan.zhihu.com/p/257806472">masscan</a></p>
-<h2 id="AWVS"><a href="#AWVS" class="headerlink" title="AWVS"></a>AWVS</h2><p>待增加：awvs 如何批量扫描，或可参考：<a href="https://zhuanlan.zhihu.com/p/108065469">AWVS 批量添加目标扫描/删除任务脚本</a></p>
-<p>安装 docker 版 AWVS 步骤：</p>
+<h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><p>帮助：<br><a href="https://cloud.tencent.com/developer/article/1702022">nmap 简介和简单使用</a><br><a href="https://cloud.tencent.com/developer/article/1622128">Nmap 详细介绍和使用</a></p>
+<p>使用：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 参数 -v 或 -vv 都可在扫描时显示详细信息</span></span><br><span class="line">nmap -vv 域名/IP</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 扫描指定端口</span></span><br><span class="line">nmap -p 端口 域名/IP</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用参数 -A 同时进行操作系统探测和版本探测等，相当于包含了 -O 和 -sV 参数的功能</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --version-intensity 设定扫描强度，以应对做了伪装的软件</span></span><br><span class="line">nmap -A --version-intensity 1(1-10) 域名/IP</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 伪装扫描</span></span><br><span class="line"><span class="meta">#</span><span class="bash">  -D &lt;decoy1,decoy2[,ME],...&gt;: Cloak a scan with decoys</span></span><br><span class="line"><span class="meta">#</span><span class="bash">  -S &lt;IP_Address&gt;: Spoof <span class="built_in">source</span> address</span></span><br><span class="line">nmap -D 假域名/IP 域名/IP</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 暴力破解出子域名及对应的ip地址</span></span><br><span class="line">nmap --script=dns-brute 域名</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 扫描服务器的常见漏洞</span></span><br><span class="line">nmap --script=vuln 域名/IP</span><br></pre></td></tr></table></figure>
+
+<p>原理：<br><a href="https://blog.csdn.net/aspirationflow/article/details/7694274">Nmap扫描原理与用法</a></p>
+<p>另外，图形化 nmap 是 Zenmap，其他类似 nmap 的工具有：<a href="https://zhuanlan.zhihu.com/p/257806472">masscan</a></p>
+<h2 id="AWVS"><a href="#AWVS" class="headerlink" title="AWVS"></a>AWVS</h2><p>安装 docker 版 AWVS 步骤：</p>
 <ol>
 <li><p>拉取下载镜像</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull secfa/docker-awvs</span><br></pre></td></tr></table></figure></li>
@@ -489,11 +512,11 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -it -d -p 3443:3443 secfa/docker-awvs</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>11版本后使用了B/S架构，使用时浏览器访问：<a href="https://ipaddress:3443/">https://IPaddress:3443</a><br>一般 ip address 是127.0.0.1</p>
-<p>默认登录用户名和密码：<br>username: <a href="mailto:&#97;&#x64;&#x6d;&#x69;&#110;&#64;&#97;&#100;&#x6d;&#105;&#110;&#46;&#99;&#x6f;&#x6d;">&#97;&#x64;&#x6d;&#x69;&#110;&#64;&#97;&#100;&#x6d;&#105;&#110;&#46;&#99;&#x6f;&#x6d;</a><br>password: Admin123</p>
+<p>默认登录用户名和密码：<br>username: <a href="mailto:&#x61;&#100;&#x6d;&#x69;&#x6e;&#64;&#97;&#x64;&#x6d;&#105;&#x6e;&#x2e;&#99;&#x6f;&#x6d;">&#x61;&#100;&#x6d;&#x69;&#x6e;&#64;&#97;&#x64;&#x6d;&#105;&#x6e;&#x2e;&#99;&#x6f;&#x6d;</a><br>password: Admin123</p>
 <p>帮助：<br><a href="https://www.sqlsec.com/2020/04/awvs.html">AWVS13.X 破解版 Windows、Linux、Docker 安装</a><br><a href="https://blog.csdn.net/weixin_44203158/article/details/106376148">AWVS acunetix_WVS13下载、安装及简单使用</a><br><a href="https://blog.csdn.net/qq_42902587/article/details/108034151">AWVS在Linux下修改登录邮箱与密码</a><br><a href="https://cloud.tencent.com/developer/article/1480771">超详细版 AWVS10.5 中文教程</a><br><a href="https://www.anquanke.com/post/id/83047">如何优雅的反击用 AWVS 10 扫描你网站的黑客</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
-<h2 id="其他安全工具"><a href="#其他安全工具" class="headerlink" title="其他安全工具"></a>其他安全工具</h2><p>MSF、Charles、安全狗 等</p>
+<h2 id="其他安全工具"><a href="#其他安全工具" class="headerlink" title="其他安全工具"></a>其他安全工具</h2><p>MSF、appscan、安全狗 等</p>
 <h3 id="Coblat-Strike"><a href="#Coblat-Strike" class="headerlink" title="Coblat Strike"></a>Coblat Strike</h3><p>参考：<br><a href="https://wiki.wgpsec.org/knowledge/intranet/Cobalt-Strike.html">Cobalt Strike 向导</a><br><a href="https://cloud.tencent.com/developer/article/1666653">Cobalt Strike入门宝典</a><br><a href="https://www.secpulse.com/newpage/author?author_id=18480">Cobalt Strike 系列教程，列出链接如下</a></p>
 <ol>
 <li><a href="https://www.secpulse.com/archives/124244.html">Cobalt Strike｜从入门到入狱</a></li>
@@ -506,7 +529,10 @@
 <li><a href="https://www.secpulse.com/archives/129089.html">Cobalt Strike 上线微信提醒</a></li>
 </ol>
 <h3 id="HttpCanary"><a href="#HttpCanary" class="headerlink" title="HttpCanary"></a>HttpCanary</h3><p>参考：<a href="https://cloud.tencent.com/developer/article/1858095">Android 抓包工具——HttpCanary</a></p>
-<h3 id="mitmproxy"><a href="#mitmproxy" class="headerlink" title="mitmproxy"></a>mitmproxy</h3><p>用于中间人攻击的代理，MITM 即中间人攻击（Man-in-the-middle attack）<br>参考：<a href="https://www.cnblogs.com/grandlulu/p/9525417.html">使用 mitmproxy + python 做拦截代理</a></p>
+<h3 id="Charles"><a href="#Charles" class="headerlink" title="Charles"></a>Charles</h3><p>参考：<a href="https://crifan.github.io/app_capture_package_tool_charles/website/">app抓包利器：Charles</a></p>
+<h3 id="dsploit"><a href="#dsploit" class="headerlink" title="dsploit"></a>dsploit</h3><p>Android 下的 dsploit，是一款手机上的渗透测试套件，需要 root 权限，其后继者是 cSploit， zANTI 等。<br>它支持中间人攻击，脚本注入，伪造数据包，端口扫描等功能。</p>
+<h3 id="mitmproxy"><a href="#mitmproxy" class="headerlink" title="mitmproxy"></a>mitmproxy</h3><p>用于中间人攻击的代理，MITM 即中间人攻击（Man-in-the-middle attack）。<br>其他类似的有 SSLStrip 等。</p>
+<p>参考：<a href="https://www.cnblogs.com/grandlulu/p/9525417.html">使用 mitmproxy + python 做拦截代理</a></p>
 <h3 id="ssdeep"><a href="#ssdeep" class="headerlink" title="ssdeep"></a>ssdeep</h3><p>基于模糊哈希（Fuzzy Hashing）算法的工具。防御端通过搜集大量已知样本，制作样本库，使用ssdeep进行相似度比对，可快速发现入侵。<br>参考：<a href="https://cloud.tencent.com/developer/article/1366565">webshell指纹-ssdeep</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 

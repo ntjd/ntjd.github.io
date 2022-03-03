@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ntjd.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="桥接老式无线路由器教程主wifi在大厅里，待在房间里时wifi信号不太好，必须靠近大厅才能收到比较快的信号。正好有换下来的老式wifi，就打算在房间里进行无线桥接。网上的教程稀烂，我东拼西凑，尝试了一个下午才桥接成功，这里记录下来，希望后人能轻松点。不过现在的新款路由器大都能一键桥接，倒不用那么麻烦。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装kali linux后的准备操作">
+<meta property="og:url" content="http://ntjd.github.io/2020/05/07/2020-05-07/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="桥接老式无线路由器教程主wifi在大厅里，待在房间里时wifi信号不太好，必须靠近大厅才能收到比较快的信号。正好有换下来的老式wifi，就打算在房间里进行无线桥接。网上的教程稀烂，我东拼西凑，尝试了一个下午才桥接成功，这里记录下来，希望后人能轻松点。不过现在的新款路由器大都能一键桥接，倒不用那么麻烦。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200507204122502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2thaWhhbmdfY2Fp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200507203900934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2thaWhhbmdfY2Fp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200507203155672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2thaWhhbmdfY2Fp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200507204807780.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2thaWhhbmdfY2Fp,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-05-08T00:19:49.000Z">
+<meta property="article:modified_time" content="2022-03-03T20:13:13.157Z">
+<meta property="article:author" content="Kevin Cai">
+<meta property="article:tag" content="router">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200507204122502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2thaWhhbmdfY2Fp,size_16,color_FFFFFF,t_70">
+
+<link rel="canonical" href="http://ntjd.github.io/2020/05/07/2020-05-07/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>安装kali linux后的准备操作 | Hexo</title>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js">
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js">
+  </script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ntjd.github.io/2020/05/07/2020-05-07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin Cai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安装kali linux后的准备操作
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 20:19:49" itemprop="dateCreated datePublished" datetime="2020-05-07T20:19:49-04:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-03 15:13:13" itemprop="dateModified" datetime="2022-03-03T15:13:13-05:00">2022-03-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Others/" itemprop="url" rel="index"><span itemprop="name">Others</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Others/router/" itemprop="url" rel="index"><span itemprop="name">router</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="桥接老式无线路由器教程"><a href="#桥接老式无线路由器教程" class="headerlink" title="桥接老式无线路由器教程"></a>桥接老式无线路由器教程</h1><p>主wifi在大厅里，待在房间里时wifi信号不太好，必须靠近大厅才能收到比较快的信号。正好有换下来的老式wifi，就打算在房间里进行无线桥接。网上的教程稀烂，我东拼西凑，尝试了一个下午才桥接成功，这里记录下来，希望后人能轻松点。不过现在的新款路由器大都能一键桥接，倒不用那么麻烦。</p>
+<span id="more"></span>
+
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p> 接下来我会管大厅的路由器叫主路由器或原路由器，房间里的路由器叫新增路由器。搜索一下如何进入自己品牌型号的<strong>路由器的管理页面</strong>，有的是路由器LAN口的ip地址，一般都是192.168.0.1、192.168.1.1这样的，有的是个域名，比如tplogin.cn，新款的还要下载app。最好上网查询这个型号的路由器设置页面怎么进，但有的只能在浏览器输入路由器LAN口的ip地址来访问（<strong>注意</strong>：后面会改路由器LAN口的ip地址，那么登录页面就会变成新的ip地址了，所以要记住自己改成什么了）。<br> 一般登录用户名都是admin，如果要密码，一般默认是123456或者admin之类的，如果不知道，可以打电话问服务商，不过可以按reset重置为默认密码（<strong>注意</strong>：对主路由器的reset重置对有的用户是<strong>高危行为</strong>，可能会导致需要工作人员重新为你家拉一条网线，当然现在很少了，不过还是建议三思）。我的两个路由器都是TP-LINK的。建议在电脑上弄，当然手机也可以。</p>
+<h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><ol>
+<li><strong>主路由器不需要做任何改动</strong>，但是要知道相应信息，比如原路由器LAN口的ip地址等，可以登陆到原路由器的管理设置页面拍下来。</li>
+<li>新增路由器插电，电脑连上这个新路由器的wifi（当然，还不能上网），进新增的<strong>路由器管理设置页面</strong>。</li>
+<li>进LAN口设置，改ip地址为原路由器LAN口ip地址的<strong>同一网段</strong>（这里指ip地址前三位）下的地址，但<strong>不能重合</strong>（ip地址共四位，最后一位改变，前三位不变。如，原路由器LAN口地址是192.168.10.1，那么新路由器LAN口地址就改成192.168.10.2（可以把2改成别的，但不能是1））。具体讲同一网段指的是几个IP地址和子网掩码相与都能得到同样的网络地址。<br><img src="https://img-blog.csdnimg.cn/20200507204122502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2thaWhhbmdfY2Fp,size_16,color_FFFFFF,t_70" alt="LAN口设置"></li>
+<li>进<strong>DHCP服务器</strong>修改页面，<strong>修改地址池开始、结束地址</strong>为原路由器的同一网段（可认为是ip地址前三位）下但范围不重合地址（ip范围不能出现重合）的区域。<br>比如原路由器地址池是192.168.10.100 到 192.168.10.199，那么新增路由器就可以改为192.168.10.200到192.168.10.230。用230减去200再加1，即31就是这个wifi能连网（能被分配ip地址）的设备数量。注意尽量不要分配到240之后，因为后面的ip地址（前面的一些，比如0也是）维修什么的可能要用。<br>修改DHCP服务这个步骤很多教程没提到，或许有些确实不用改也可以，如果不开启DHCP服务就会由主路由器分配ip地址。<br><img src="https://img-blog.csdnimg.cn/20200507203900934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2thaWhhbmdfY2Fp,size_16,color_FFFFFF,t_70" alt="DHCP服务器"></li>
+<li>同样上图中页面，修改<strong>新路由器网关</strong>为原路由器LAN口的ip地址（很重要，比如改成192.168.10.1），<strong>DNS与备用DNS</strong>也都填原路由器的两个DNS。</li>
+<li>找到<strong>WDS选项</strong>，点击开启，再点击扫描，找到原路由器的SSID—就是原路由器的wifi名字，有密码输密码，保存（它可能会提示消息要改<strong>信道</strong>，我选了1，如果不行多换几个试试），重启新增路由器。<br><img src="https://img-blog.csdnimg.cn/20200507203155672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2thaWhhbmdfY2Fp,size_16,color_FFFFFF,t_70" alt="WDS"></li>
+<li>重启后要进路由器设置页面，就得填自己修改后的LAN口的ip地址了。可以给新增路由器加个密码什么的。如果想实现无缝连接——就是大厅、房间来回走也可以自动重连新wifi，那么可以把新增wifi的名字和密码都改为原路由器的名字和密码。（如果不行，搜索对应教程看看哪里还需要修改）</li>
+<li>重启后连上新增路由器的wifi，开个网站试试看能不能联网，不行的话检查一下哪个步骤有失误，或者再搜索自己品牌型号路由器的桥接教程看看有什么不一样。</li>
+<li>可以尝试看看我新建的另一个博客<a href="%5B%E6%B3%A82%EF%BC%9A%E4%B8%8D%E5%B0%8F%E5%BF%83%E6%94%B9%E5%BA%9F%E4%BA%86%EF%BC%8C%E6%94%B9%E9%94%99%E4%BA%86%EF%BC%8C%E4%B8%8D%E8%AE%B0%E5%BE%97%E4%BA%86%EF%BC%8C%E6%8C%89%E6%96%B0%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84reset%EF%BC%8C%E5%B0%B1%E5%8F%AF%E6%81%A2%E5%A4%8D%E9%BB%98%E8%AE%A4%E8%AE%BE%E7%BD%AE%EF%BC%8C%E5%86%8D%E9%87%8D%E6%96%B0%E8%AE%BE%E7%BD%AE%E5%8D%B3%E5%8F%AF%5D(https://ntjd.github.io)">^1</a><a href="%5B%E6%B3%A84%EF%BC%9A%E5%90%8E%E6%9D%A5%EF%BC%8C%E6%88%91%E9%87%8D%E6%96%B0%E6%89%BE%E5%88%B0%E4%BA%86%E4%B8%80%E7%AF%87%E5%BE%88%E8%AF%A6%E7%BB%86%E7%9A%84%E6%95%99%E7%A8%8B%EF%BC%8C%E5%8F%AF%E8%83%BD%E6%88%91%E5%BE%97%E6%94%B9%E4%B8%AA%E6%A0%87%E9%A2%98%E3%80%82%E8%A6%81%E6%98%AF%E4%B9%8B%E5%89%8D%E8%83%BD%E6%89%BE%E5%88%B0%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E5%B0%B1%E5%A5%BD%E4%BA%86%5D(https://zhuanlan.zhihu.com/p/46501763)">^3</a>：<a href="https://ntjd.github.io/">https://ntjd.github.io</a><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2>可以在房间里愉快地上网了，用speedtest测了网速，快了好几倍，自此几个月，都没出现突然断网的情况了。<br><img src="https://img-blog.csdnimg.cn/20200507204807780.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2thaWhhbmdfY2Fp,size_16,color_FFFFFF,t_70" alt="无线状态"><h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2>后面停电了一次，来电后突然就无法联网了。登录设置页面一看，原来是原路由器上电后信道改成了11，把新路由器的信道同样改为11，重启后就可以了。主路由器重启、更新设置等导致联网出现问题的，重新按步骤再桥接一次即可。可以将一些选项的自动分配改为手动输入，这样主路由器重上电后就不会自动更改设置导致桥接失败。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/router/" rel="tag"># router</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/06/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%A5%E6%8E%A5%E8%80%81%E5%BC%8F%E6%97%A0%E7%BA%BF%E8%B7%AF%E7%94%B1%E5%99%A8%E6%95%99%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">桥接老式无线路由器教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">1.1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">步骤：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-number">1.3.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-number">1.4.</span> <span class="nav-text">后续</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Kevin Cai</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+      <!-- music player -->
+      <div>
+      <iframe id="music_iframe"
+ 	frameborder="no" border="0" 
+	 marginwidth="0" marginheight="0" 
+	 src="https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C">
+      </iframe>
+	
+	<input type="button" onclick="javascript:refreshFrame();" value="next" />
+      </div>
+ 
+	<script type="text/javascript">
+	   function refreshFrame(){
+	     document.getElementById('music_iframe').src="https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C";
+	}
+	</script>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">[object Object]</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

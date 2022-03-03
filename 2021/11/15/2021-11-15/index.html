@@ -20,19 +20,21 @@
     var CONFIG = {"hostname":"ntjd.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前言BP(back propagation)神经网络是1986年由Rumelhart和McClelland为首的科学家提出的概念，是一种按照误差反向传播算法训练的多层前馈神经网络，是应用最广泛的神经网络模型之一。 帮助：神经网络算法深度学习笔记">
+  <meta name="description" content="前言BP(back propagation)神经网络是1986年由Rumelhart和McClelland为首的科学家提出的概念，是一种按照误差反向传播算法训练的多层前馈神经网络，是应用最广泛的传统神经网络模型之一。 帮助：神经网络算法深度学习笔记Deeplizard《Pytorch神经网络高效入门教程》中文字幕版Deep Learning（深度学习）学习笔记整理系列之（三）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习之神经网络深度学习初探">
 <meta property="og:url" content="http://ntjd.github.io/2021/11/15/2021-11-15/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言BP(back propagation)神经网络是1986年由Rumelhart和McClelland为首的科学家提出的概念，是一种按照误差反向传播算法训练的多层前馈神经网络，是应用最广泛的神经网络模型之一。 帮助：神经网络算法深度学习笔记">
+<meta property="og:description" content="前言BP(back propagation)神经网络是1986年由Rumelhart和McClelland为首的科学家提出的概念，是一种按照误差反向传播算法训练的多层前馈神经网络，是应用最广泛的传统神经网络模型之一。 帮助：神经网络算法深度学习笔记Deeplizard《Pytorch神经网络高效入门教程》中文字幕版Deep Learning（深度学习）学习笔记整理系列之（三）">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f6d405ee8e4c49fcbd783b9c2e5ba977.png">
 <meta property="article:published_time" content="2021-11-15T17:40:38.000Z">
-<meta property="article:modified_time" content="2021-11-21T20:52:07.687Z">
+<meta property="article:modified_time" content="2022-03-03T20:15:14.677Z">
 <meta property="article:author" content="Kevin Cai">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Deep learning">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/f6d405ee8e4c49fcbd783b9c2e5ba977.png">
 
 <link rel="canonical" href="http://ntjd.github.io/2021/11/15/2021-11-15/">
 
@@ -226,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-21 15:52:07" itemprop="dateModified" datetime="2021-11-21T15:52:07-05:00">2021-11-21</time>
+                <time title="修改时间：2022-03-03 15:15:14" itemprop="dateModified" datetime="2022-03-03T15:15:14-05:00">2022-03-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,25 +255,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>BP(back propagation)神经网络是1986年由Rumelhart和McClelland为首的科学家提出的概念，是一种按照误差反向传播算法训练的多层前馈神经网络，是应用最广泛的神经网络模型之一。</p>
-<p>帮助：<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7a85f1832951">神经网络算法</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014595019/article/details/52554582">深度学习笔记</a></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>BP(back propagation)神经网络是1986年由Rumelhart和McClelland为首的科学家提出的概念，是一种按照误差反向传播算法训练的多层前馈神经网络，是应用最广泛的传统神经网络模型之一。</p>
+<p>帮助：<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7a85f1832951">神经网络算法</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014595019/article/details/52554582">深度学习笔记</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UE411N7pD">Deeplizard《Pytorch神经网络高效入门教程》中文字幕版</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/zouxy09/article/details/8775518">Deep Learning（深度学习）学习笔记整理系列之（三）</a></p>
 <span id="more"></span>
 
-<h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><h2 id="多层前馈神经网络（multilayer-feedforward-neural-network）"><a href="#多层前馈神经网络（multilayer-feedforward-neural-network）" class="headerlink" title="多层前馈神经网络（multilayer feedforward neural network）"></a>多层前馈神经网络（multilayer feedforward neural network）</h2><p>由于多层前馈网络的训练经常采用误差反向传播算法，人们也常将多层前馈网络直接称为BP（Back Propagation）网。</p>
-<h2 id="后向传播"><a href="#后向传播" class="headerlink" title="后向传播"></a>后向传播</h2><p>从结构上讲，BP网络具有输入层、隐藏层和输出层；从本质上讲，BP算法就是以网络误差平方为目标函数、采用梯度下降法来计算目标函数的最小值</p>
+<h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><h2 id="多层前馈神经网络（multilayer-feedforward-neural-network）"><a href="#多层前馈神经网络（multilayer-feedforward-neural-network）" class="headerlink" title="多层前馈神经网络（multilayer feedforward neural network）"></a>多层前馈神经网络（multilayer feedforward neural network）</h2><p>多层前馈（multilayer feed-forward）神经网络也叫多层感知机（multilayer perceptron，MLP），采用一种单向多层结构，由一个输入层、一个或多个隐藏层和一个输出层组成，每一层都全连接到下一层，每个神经元只接收前一层的神经元的输出，并输出给下一层，各层间没有反馈。由于多层前馈网络的训练经常采用误差反向传播算法，人们也常将多层前馈网络直接称为BP（Back Propagation）网。<br><img src="https://img-blog.csdnimg.cn/f6d405ee8e4c49fcbd783b9c2e5ba977.png" alt="多层前馈神经网络" title="多层前馈神经网络"></p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>损失函数（loss function）或代价函数（cost function）是将随机事件或其有关随机变量的取值映射为非负实数以表示该随机事件的“风险”或“损失”的函数。损失函数通常作为学习准则与优化问题相联系，即需要通过最小化损失函数求解和评估模型。</p>
+<p>这里我们一般认为是用来量化对比神经网络预测结果和期待结果之间的差异或损失，学习的过程就是使得学习的结果不断逼近损失最小值的过程。</p>
+<p>分类问题所对应的损失函数为0-1损失。0-1损失函数是一个不连续的分段函数，不利于求解其最小化问题，因此在应用可构造其代理损失（surrogate loss）</p>
+<h2 id="后向传播"><a href="#后向传播" class="headerlink" title="后向传播"></a>后向传播</h2><p>后向传播算法是将输出层的误差向后进行传播来实现权重的调整，使得网络输出的样本标签与实际标签相靠拢。后向传播算法就是以网络误差平方为目标函数、采用梯度下降法来计算损失函数的最小值。</p>
+<p>论文原文：</p>
+<blockquote>
+<p>repeatedly adjusts the weights of the connections in the network so as to minimize a measure of the difference between the actual output vector of the net and the desired output vector.</p>
+</blockquote>
+<p>BP算法存在的问题：</p>
+<ol>
+<li>梯度越来越稀疏：从顶层越往下，误差校正信号越来越小；</li>
+<li>容易收敛到局部最小值：尤其是从远离最优区域开始的时候（随机值初始化会导致这种情况的发生）；</li>
+<li>一般只能用有标签的数据来训练，也就是监督学习。</li>
+</ol>
+<p>复杂的神经网络难以用反向传播算法来训练，对于一个 deep network（7层以上），残差传播到最前面的层已经变得太小，出现所谓的 gradient diffusion（梯度扩散），所以深度学习一般不用它。</p>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ACM_hades/article/details/91049013">【深度学习】后向传播(BP)算法</a></p>
 <h3 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h3><p>梯度下降法的基本思想可以类比为一个下山的过程。<br>假设：一个人在山顶，需要从山上下到最低处。但下山的路径无法确定，需要利用自己周围的信息去找到下山的路径。<br>这时，以当前所处的位置为基准，寻找四周最陡峭的地方，然后朝最陡峭的地方走，每走一段距离，就再次寻找最陡峭的地方，继续朝最陡峭的地方走，如此反复，最后就能快速的下到山底。</p>
 <p>对于一个代表误差的函数，需要快速减小误差，使得误差最小，那么使用梯度下降法，不断朝着下降最剧烈的方向移动，最后能够到达一个函数图像局部最低点。</p>
 <p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/335191534">通俗易懂讲解梯度下降法</a></p>
-<h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>激活函数负责将神经元的输入映射到输出端。<br>引入激活函数是为了增加神经网络模型的非线性。没有激活函数的每层都相当于矩阵相乘。<br>激活函数有多种，如：Sigmoid函数、Tanh函数、ReLU(The Rectified Linear Unit)函数</p>
+<h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>激活函数负责将神经元的输入映射到输出端。前一层的输入传播到一个神经元，神经元对输入按不同权重计算后，再用激活函数再次计算以输出到下一层。<br>引入激活函数是为了增加神经网络模型的非线性。没有激活函数的每层都相当于矩阵相乘。<br>激活函数有多种，如：Sigmoid函数、Tanh函数、ReLU(The Rectified Linear Unit)函数</p>
 <p>参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/428448728">ReLU激活函数</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1800954">深度学习领域最常用的10个激活函数</a></p>
 <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
-<h1 id="深度学习的几种方法"><a href="#深度学习的几种方法" class="headerlink" title="深度学习的几种方法"></a>深度学习的几种方法</h1><h2 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h2><p>参考：<a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/cnn/">卷积神经网络 – CNN 介绍</a></p>
+<h1 id="深度学习的几种方法"><a href="#深度学习的几种方法" class="headerlink" title="深度学习的几种方法"></a>深度学习的几种方法</h1><h2 id="卷积神经网络-CNN"><a href="#卷积神经网络-CNN" class="headerlink" title="卷积神经网络 - CNN"></a>卷积神经网络 - CNN</h2><p>参考：<a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/cnn/">卷积神经网络 – Convolutional Neural Network | CNN</a></p>
+<h2 id="循环神经网络-–-RNN"><a href="#循环神经网络-–-RNN" class="headerlink" title="循环神经网络 –  RNN"></a>循环神经网络 –  RNN</h2><p>参考：<a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/rnn/">循环神经网络 – Recurrent Neural Network | RNN</a></p>
 <h2 id="生成对抗网络-–-GANs"><a href="#生成对抗网络-–-GANs" class="headerlink" title="生成对抗网络 – GANs"></a>生成对抗网络 – GANs</h2><p>参考：<a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/gan/">生成对抗网络 – Generative Adversarial Networks | GAN</a></p>
-<h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p>参考：<a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/reinforcement-learning/">强化学习-Reinforcement learning | RL</a></p>
+<h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/reinforcement-learning/">强化学习-Reinforcement learning | RL</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jinxulin/p/3511298.html">什么是增强学习（Reinforcement Learning）</a></p>
 <h1 id="pytorch-的使用"><a href="#pytorch-的使用" class="headerlink" title="pytorch 的使用"></a>pytorch 的使用</h1><p>谷歌的 Tensorflow 与 Facebook 的 PyTorch 是颇受欢迎的两种深度学习框架。Tensorflow 的学习曲线比 PyTorch 更难一点，但学习资源可能相对更多。如果为了入门和快速上手，建议使用 pytorch 进行学习。</p>
-<p>帮助：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/nickchen121/p/14662511.html">PyTorch从入门到放弃（目录）</a></p>
+<p>帮助：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/nickchen121/p/14662511.html">PyTorch从入门到放弃（目录）</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UE411N7pD">Deeplizard《Pytorch神经网络高效入门教程》中文字幕版</a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>进入<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">官网</a>，在表格中选择你电脑配置对应的 “Your OS、Package、Compute Platform” 等，随后底下会列出相应环境安装所需要使用的命令。</p>
 <p>如选择</p>
 <table>
@@ -308,22 +325,67 @@
 </tbody></table>
 <p>那么在终端输入给出的命令即可，建议拆开来分别下载，那样一个出问题不容易影响到别的，如下。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip3 install torch</span><br><span class="line">pip3 install torchvision</span><br><span class="line">pip3 install torchaudio</span><br></pre></td></tr></table></figure>
-<p>其中 torchvision 用于处理图像视频，torchvideo 处理音频，还有处理自然语言的 torchtext 等，根据需要斟酌选择。</p>
-<p>下载可能会很慢，这时如果给出的命令里有一个下载链接，可以点开链接，找到要下载的内容安装包，点击下载，在下载到本地后再次使用命令安装本地包。</p>
+<p>其中 torchvision 用于处理图像视频，torchvideo 处理音频，还有处理自然语言的 torchtext 等，根据需要斟酌选择。需要保证 torch 库和其他库的版本对应</p>
+<p>下载可能会很慢，可以直接换源下载，如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install torch -i https://mirrors.cloud.tencent.com/pypi/simple</span><br></pre></td></tr></table></figure>
+<p>torch 用原来的源下载很慢，但其他包如 torchvision 等不换源下载的速度似乎快的多。</p>
+<p>而如果给出的命令里有一个下载链接，也可以点开链接，找到要下载的内容安装包，点击下载，在下载到本地后再次使用命令安装本地包。</p>
 <p>如上述选择的 Compute Platform 改成 CUDA 后， 给出的命令里会有个链接：<a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/cu113/torch_stable.html">https://download.pytorch.org/whl/cu113/torch_stable.html</a><br>在里面搜索你需要的内容，如果不知道要哪个安装包，终端直接输入官网原来给出的命令，下载提示里会有相应的包名。</p>
 <p>比如下载了 torch-1.10.0-cp37-cp37m-win_amd64.whl，那么本地安装时进入到相应目录，输入</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install torch-1.10.0-cp37-cp37m-win_amd64.whl</span><br></pre></td></tr></table></figure>
 
-<p>注：torch 原来的源下载很慢，但其他包如 torchvision 等下载速度似乎快的多，可以安装 torch 后直接输入给定的命令下载，或者直接换源下载，pip install torch -i <a target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/pypi/simple">https://mirrors.cloud.tencent.com/pypi/simple</a></p>
-<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><p>使用教程和基础概念参考：<a target="_blank" rel="noopener" href="https://pytorch.apachecn.org/">PyTorch 中文教程 &amp; 文档</a></p>
+<p>注1：如果在云服务器上安装时报错，如报错：</p>
+<blockquote>
+<p>PermissionError: [Errno 13] Permission denied: ‘/usr/local/lib/python3.6/site-packages/xxx.py’</p>
+</blockquote>
+<p>这是由于用户权限的问题，可以增加参数 –user： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --user xxxPackage</span><br></pre></td></tr></table></figure>
+
+<p>注2：如果 python 在 pip 安装 pytorch 时失败，并显示 killed ，这是缓存不足的原因，可以加上 –no-cache-dir 试试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install torch --no-cache-dir</span><br></pre></td></tr></table></figure>
+
+<p>注3：如果安装 torchvision 等时提示 pillow，jpeg，Python.h 等关键词并失败，那么可能需要安装一些依赖包，参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15557299/article/details/121743835">The headers or library files could not be found for jpeg</a>，如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --user Pillow</span><br><span class="line">yum install libjpeg-devel</span><br><span class="line">yum install python-devel</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><p>待修改······</p>
+<p>使用教程和基础概念参考：<a target="_blank" rel="noopener" href="https://pytorch.apachecn.org/">PyTorch 中文教程 &amp; 文档</a></p>
 <p>PyTorch 和 Numpy 有一些关联，可以先适当了解一下 Numpy ，参考 <a target="_blank" rel="noopener" href="https://www.numpy.org.cn/user/setting-up.html">NumPy 官方中文文档</a></p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>待补充</p>
-<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>如果没有服务器，也可以考虑百度的 paddle 平台，不过需要重新学习它的框架，有学习成本：<br><a target="_blank" rel="noopener" href="https://www.paddlepaddle.org.cn/">开源深度学习平台飞桨</a></p>
-<p>可以答题获得试用算力：<br><a target="_blank" rel="noopener" href="https://aistudio.baidu.com/aistudio/learnmap">飞桨AI Studio - 人工智能学习实训社区</a></p>
-<p>也购买云服务器。</p>
+<h3 id="前置设置"><a href="#前置设置" class="headerlink" title="前置设置"></a>前置设置</h3><p>想运行别人的代码但没有 CPU 并因此报错：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_50635872/article/details/108607340">Pytorch/Torch：电脑无 cuda 情况下，使用 CPU 运行</a></p>
+<p>使用多 GPU 训练：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangkaidehao/article/details/104411682">Pytorch多GPU计算之torch.nn.DataParallel()</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40676033/article/details/120166189">Pytorch 多卡训练原理与实现</a><br>第一张 GPU 会负责输出，所以一部分工作量会集中在第一张 GPU 卡上。</p>
+<h3 id="读取数据集"><a href="#读取数据集" class="headerlink" title="读取数据集"></a>读取数据集</h3><p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42111770/article/details/121754627">Pytorch 加载图像数据（ImageFolder和Dataloader）</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37555071/article/details/107532319">PyTorch之torchvision.transforms详解[原理+代码实现]</a></p>
+<h3 id="保存数据集"><a href="#保存数据集" class="headerlink" title="保存数据集"></a>保存数据集</h3><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ayayayayo/article/details/107807599">【Pytorch】torchvision.utils.save_image直接保存 tensor 为图片</a></p>
+<h3 id="加载和保存训练的模型"><a href="#加载和保存训练的模型" class="headerlink" title="加载和保存训练的模型"></a>加载和保存训练的模型</h3><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41519463/article/details/103205665">PyTorch保存和加载模型(全面汇总)</a></p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>待补充······</p>
+<p>获取数据集：<br>首先要有数据集用于训练，如果想自己生成数据集，或许可以使用 <a target="_blank" rel="noopener" href="http://www.jinglingbiaozhu.com/">精灵标注助手</a> 自行进行对图片、文本、视频的位置标注，可以导出成 XML、JSON、MongoDB。<br>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/TangLingBo/article/details/107318200">pytorch 图片标注和 yolov3 目标检测教程</a></p>
+<ol>
+<li><p>图像风格转换：<br><a target="_blank" rel="noopener" href="https://pytorch.org/tutorials/advanced/neural_style_tutorial.html">pytorch官网 —— NEURAL TRANSFER USING PYTORCH</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/ssunshining/article/details/109859168">图像风格迁移——pytorch实现(同上)</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/z941030/p/7056814.html">基于深度学习的图像风格转换</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/shenxiaolu1984/article/details/52090012">【深度学习】A neural algorithm of artistic style算法详解</a></p>
+</li>
+<li><p>图像识别：<br>听说有个 yolo 框架</p>
+</li>
+</ol>
+<ol start="3">
+<li>AI 换脸：<br>deepfake 自然最出名。<br><a target="_blank" rel="noopener" href="https://github.com/Oldpan/Faceswap-Deepfake-Pytorch">Oldpan / Faceswap-Deepfake-Pytorch —— Github</a><br>注意：里头的训练好的 300M 模型链接是 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/197RIMB_Po96RZNFzV-wqjA">百度网盘</a>  密码 z4wa</li>
+</ol>
+<ol start="4">
+<li><p>通用深度隐写术在隐写术和水印等的应用：<br><a target="_blank" rel="noopener" href="https://github.com/ChaoningZhang/Universal-Deep-Hiding">UDH: Universal Deep Hiding for Steganography, Watermarking, and Light Field Messaging</a></p>
+</li>
+<li><p>大姿态下人脸快速对齐人脸生成模型方案：<br><a target="_blank" rel="noopener" href="https://github.com/cleardusk/3DDFA_V2">3DDFA —— Github</a></p>
+</li>
+</ol>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>通常建议使用服务器进行训练，这样可以少占用自己的计算机资源。<br>如果没有服务器，也可以考虑百度的 paddle 平台，不过需要重新学习它的框架，有学习成本：<br><a target="_blank" rel="noopener" href="https://www.paddlepaddle.org.cn/">开源深度学习平台飞桨</a></p>
+<p>可以通过答题获得试用算力：<br><a target="_blank" rel="noopener" href="https://aistudio.baidu.com/aistudio/learnmap">飞桨AI Studio - 人工智能学习实训社区</a></p>
+<p>也可以购买云服务器。<br>比如腾讯新用户或购买新产品有时有抢购优惠，2核 4G 80GB 1兆带宽 轻量应用服务器 74元/年，阿里云什么的也有类似的活动。<br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/act/new">云产品首单秒杀_云服务器秒杀_云数据库秒杀- 腾讯云</a></p>
+<p>尽管便宜的服务器性能训练起来速度很慢，不过在别的地方服务器也能发挥作用，我打算出一篇关于云服务器的运用文章，待补······</p>
+<p>另外，建议下载一些别人训练好的模型参数，并以此作为训练模型的初始参数，这样训练会快些。</p>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>使用 top 命令查看 cpu 等使用情况，参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zmhzmhzm/article/details/113465451">Linux top指令交互界面常用操作</a></p>
+<p>Linux 下让进程后台执行并实时刷新输出到文件中：nohup unbuffer command &gt; file.out 2&gt;&amp;1 &amp;<br>其中 unbuffer 需要额外安装 expect-devel，以实时刷新。<br>参考：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/presleyren/p/10966148.html">Linux 后台运行</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lonnng2004/article/details/108204488">Linux实时将所有输出重定向到文件</a></p>
+<p>将 print 输出的内容保存到文件中，可以参考:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/w76190504/article/details/81085055">python 将 print输出的内容保存到txt文件中</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/xu380393916/article/details/100887083">python3 将print打印的内容保存到日志</a><br>Linux 下也可以使用标准输出（STDOUT）重定向，如 server.py &gt;python.log</p>
 <h1 id="课外阅读"><a href="#课外阅读" class="headerlink" title="课外阅读"></a>课外阅读</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010177286/article/details/79304778">机器学习基本概念知识汇</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/290011942">样本量极少如何机器学习？</a>：通过将有限的监督信息（小样本）与先验知识（无标记或弱标记样本、其他数据集和标签、其他模型等）结合，使得模型可以有效的学习小样本中的信息。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44211968/article/details/121314757">【机器学习】Few-shot learning（少样本学习）</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/258562899">小样本学习思考总结（FSL）</a></p>
 
     </div>
 
@@ -408,7 +470,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">概念介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%B1%82%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88multilayer-feedforward-neural-network%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">多层前馈神经网络（multilayer feedforward neural network）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-number">2.2.</span> <span class="nav-text">后向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">梯度下降法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">激活函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">深度学习的几种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">3.1.</span> <span class="nav-text">卷积神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C-%E2%80%93-GANs"><span class="nav-number">3.2.</span> <span class="nav-text">生成对抗网络 – GANs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">3.3.</span> <span class="nav-text">强化学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pytorch-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">pytorch 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">使用教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">4.3.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">4.4.</span> <span class="nav-text">服务器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E5%A4%96%E9%98%85%E8%AF%BB"><span class="nav-number">5.</span> <span class="nav-text">课外阅读</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">概念介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%B1%82%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88multilayer-feedforward-neural-network%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">多层前馈神经网络（multilayer feedforward neural network）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-number">2.3.</span> <span class="nav-text">后向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-number">2.3.1.</span> <span class="nav-text">梯度下降法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.2.</span> <span class="nav-text">激活函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">深度学习的几种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-CNN"><span class="nav-number">3.1.</span> <span class="nav-text">卷积神经网络 - CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-%E2%80%93-RNN"><span class="nav-number">3.2.</span> <span class="nav-text">循环神经网络 –  RNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C-%E2%80%93-GANs"><span class="nav-number">3.3.</span> <span class="nav-text">生成对抗网络 – GANs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">3.4.</span> <span class="nav-text">强化学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pytorch-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">pytorch 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">使用教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.2.1.</span> <span class="nav-text">前置设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">4.2.2.</span> <span class="nav-text">读取数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">4.2.3.</span> <span class="nav-text">保存数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%92%8C%E4%BF%9D%E5%AD%98%E8%AE%AD%E7%BB%83%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.2.4.</span> <span class="nav-text">加载和保存训练的模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">4.3.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">4.4.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">4.4.1.</span> <span class="nav-text">基本操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E5%A4%96%E9%98%85%E8%AF%BB"><span class="nav-number">5.</span> <span class="nav-text">课外阅读</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -422,20 +484,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -479,7 +541,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

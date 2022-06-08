@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ntjd.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言参考：【网络安全】常见的网路安全设备及功能作用总结Web安全学习笔记 —— 常见网络设备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全设备总结">
+<meta property="og:url" content="http://ntjd.github.io/2022/06/08/2022-6-8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言参考：【网络安全】常见的网路安全设备及功能作用总结Web安全学习笔记 —— 常见网络设备">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-08T07:58:07.000Z">
+<meta property="article:modified_time" content="2022-06-08T08:41:34.907Z">
+<meta property="article:author" content="Kevin Cai">
+<meta property="article:tag" content="security">
+<meta property="article:tag" content="security devices">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://ntjd.github.io/2022/06/08/2022-6-8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>网络安全设备总结 | Hexo</title>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js">
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js">
+  </script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ntjd.github.io/2022/06/08/2022-6-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin Cai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络安全设备总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-08 03:58:07 / 修改时间：04:41:34" itemprop="dateCreated datePublished" datetime="2022-06-08T03:58:07-04:00">2022-06-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/security/" itemprop="url" rel="index"><span itemprop="name">security</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42742658/article/details/109173070">【网络安全】常见的网路安全设备及功能作用总结</a><br><a target="_blank" rel="noopener" href="https://websec.readthedocs.io/zh/latest/misc/netdev.html#section-3">Web安全学习笔记 —— 常见网络设备</a></p>
+<span id="more"></span>
+
+<h1 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h1><p>作用：<br>防火墙是位于两个(或多个)网络间，实行网络间访问或控制的一组软件和硬件设备组合的组件集合。隔离网络，制定出不同区域之间的访问控制策略来控制不同信任程度区域间传送的数据流。它可通过监测、限制、更改跨越防火墙的数据流，尽可能地对外部屏蔽网络内部的信息、结构和运行状况，以此来实现网络的安全保护。</p>
+<p>过滤进、出网络的数据<br>防止不安全的协议和服务<br>管理进、出网络的访问行为<br>记录通过防火墙的信息内容<br>对网络攻击进行检测与警告<br>防止外部对内部网络信息的获取<br>提供与外部连接的集中管理</p>
+<p>类型：<br>1）网络层防火墙(数据包过滤型)，基于源地址和目的地址、应用、协议以及每个IP包的端口来作出通过与否的判断。<br>2）应用层防火墙，针对特别的网络应用服务协议即数据过滤协议，并且能够对数据包分析并形成相关的报告。<br>3）代理服务防火墙</p>
+<p>局限性：<br>防火墙是根据合法网址和服务端口过滤数据包的，但是对合法的但是具有破坏性的数据包没有防护效能。防火墙必须部署在流量的必经之路上，防火墙的效能会影响网络的效能。</p>
+<h2 id="WAF（Web-Application-Firewall，Web应用防火墙）"><a href="#WAF（Web-Application-Firewall，Web应用防火墙）" class="headerlink" title="WAF（Web Application Firewall，Web应用防火墙）"></a>WAF（Web Application Firewall，Web应用防火墙）</h2><p>范围：应用层防护软件</p>
+<p>作用：<br>通过特征提取和分块检索技术进行模式匹配来达到过滤，分析，校验网络请求包的目的，在保证正常网络应用功能的同时，隔绝或者阻断无效或者非法的攻击请求<br>检测异常协议，拒绝不符合HTTP标准的请求<br>对状态管理进行会话保护<br>Cookies保护<br>信息泄露保护<br>DDoS防护<br>禁止某些IP访问<br>可疑IP检查<br>安全HTTP头管理</p>
+<ul>
+<li>X-XSS-Protection<br>X-Frame-Options</li>
+</ul>
+<p>机制检测</p>
+<ul>
+<li>CSRF token<br>HSTS</li>
+</ul>
+<p>可防：（源自应用程序的安全漏洞）<br>SQL注入漏洞，跨站脚本XSS，文件包含和安全配置错误等漏洞</p>
+<p>特点：<br>区别于传统防火墙，可以防护特定的应用程序，传统防火墙只能在服务器之间作用</p>
+<p>缺点：<br>1） 特定的防护手段可以被绕过或者无效化，必须同攻击手段一起升级进步，否则将失去效用。<br>2） 需要和入侵检测系统等安全设备联合使用，且防护程度和网络的性能成反相关。</p>
+<h1 id="IDS-Intrusion-Detection-System，入侵检测系统"><a href="#IDS-Intrusion-Detection-System，入侵检测系统" class="headerlink" title="IDS ( Intrusion Detection System，入侵检测系统)"></a>IDS ( Intrusion Detection System，入侵检测系统)</h1><p>入侵检测即通过从网络系统中的若干关键节点收集并分析信息，监控网络中是否有违反安全策略的行为或者是否存在入侵行为。入侵检测系统通常包含3个必要的功能组件：信息来源、分析引擎和响应组件。</p>
+<ol>
+<li>信息收集包括收集系统、网络、数据及用户活动的状态和行为。入侵检测利用的信息一般来自：系统和网络日志文件、非正常的目录和文件改变、非正常的程序执行这三个方面。</li>
+<li>分析引擎对收集到的有关系统、网络、数据及用户活动的状态和行为等信息，是通过模式匹配、统计分析和完整性分析这三种手段进行分析的。前两种用于实时入侵检测，完整性分析用于事后分析。</li>
+<li>告警与响应根据入侵性质和类型，做出相应的告警与响应。</li>
+</ol>
+<p>范围：网络层防护软件</p>
+<p>作用：（识别攻击行为并且报警）<br>积极主动的防护措施，按照一定的安全策略，通过软件，硬件对网络，系统的运行进行实时的监控，尽可能地发现网络攻击行为，积极主动的处理攻击，保证网络资源的机密性，完整性和可用性。</p>
+<p>特点：<br>1） 是一个积极主动的监听设备。<br>2） 无需有流量经过，可以实时镜像流量过去给它分析监控就好。<br>3） 不影响网络的性能。<br>4） 部署位置尽可能靠近攻击源或者受保护资源（服务器区域交换机，互联网接入路由后第一个交换机，重点保护源交换机）</p>
+<p>缺点：<br>1） 误报率高<br>2） 没有主动防御能力，仅仅是监控或者少量的反制能力<br>3） 不能解析加密的数据流</p>
+<p>类型：<br>IDS 可以分为基于主机的入侵检测系统(HIDS)和基于网络的入侵检测系统(NIDS)。<br>基于主机的入侵检测系统是早期的入侵检测系统结构，通常是软件型的，直接安装在需要保护的主机上。其检测的目标主要是主机系统和系统本地用户，检测原理是根据主机的审计数据和系统日志发现可疑事件。</p>
+<p>这种检测方式的优点主要有：信息更详细、误报率要低、部署灵活。这种方式的缺点主要有：会降低应用系统的性能；依赖于服务器原有的日志与监视能力；代价较大；不能对网络进行监测；需安装多个针对不同系统的检测系统。</p>
+<p>基于网络的入侵检测方式是目前一种比较主流的监测方式，这类检测系统需要有一台专门的检测设备。检测设备放置在比较重要的网段内，不停地监视网段中的各种数据包，而不再是只监测单一主机。它对所监测的网络上每一个数据包或可疑的数据包进行特征分析，如果数据包与产品内置的某些规则吻合，入侵检测系统就会发出警报，甚至直接切断网络连接。目前，大部分入侵检测产品是基于网络的。</p>
+<p>这种检测技术的优点主要有：能够检测那些来自网络的攻击和超过授权的非法访问；不需要改变服务器等主机的配置，也不会影响主机性能；风险低；配置简单。其缺点主要是：成本高、检测范围受局限；大量计算，影响系统性能；大量分析数据流，影响系统性能；对加密的会话过程处理较难；网络流速高时可能会丢失许多封包，容易让入侵者有机可乘；无法检测加密的封包；对于直接对主机的入侵无法检测出。</p>
+<h1 id="IPS-Intrusion-Prevention-System，入侵预防系统"><a href="#IPS-Intrusion-Prevention-System，入侵预防系统" class="headerlink" title="IPS ( Intrusion Prevention System，入侵预防系统)"></a>IPS ( Intrusion Prevention System，入侵预防系统)</h1><p>入侵防御系统是一部能够监视网络或网络设备的网络资料传输行为的计算机网络安全设备，能够即时的中断、调整或隔离一些不正常或是具有伤害性的网络资料传输行为。<br>串行部署的防火墙可以拦截低层攻击行为，但对应用层的深层攻击行为无能为力。旁路部署的IDS可以及时发现那些穿透防火墙的深层攻击行为，作为防火墙的有益补充，但是无法实时的阻断。<br>因此出现了基于IDS和防火墙联动的IPS：通过IDS来发现，通过防火墙来阻断。但由于迄今为止没有统一的接口规范，加上越来越频发的“瞬间攻击”（一个会话就可以达成攻击效果，如SQL注入、溢出攻击等），使得IDS与防火墙联动在实际应用中的效果不显著。</p>
+<p>作用：（实时监控网络行为，中断或者调整隔离网络非法行为，比IDS具有防御能力）<br>是计算机网络安全设施，是对防病毒软件和防火墙的补充。入侵预防系统是一部能够监视网络或网络设备的网络数据传输行为的计算机网络安全设备，能够即时的中断、调整或隔离一些不正常或是具有伤害性的网络数据传输行为。</p>
+<p>必要性：<br>传统防火墙作用在2-4层，对4层以上的防护作用很小（4层以上需要拆数据包，而拆数据包会影响速率），病毒软件工作在5-7层，这样中间4-5层属于空挡，所以IPS是作为病毒软件和防火墙的补充，作用在4-5层</p>
+<p>特点：<br>比IDS不仅可以防护还具有了反制，组织攻击的能力，防攻兼备</p>
+<p>缺点：<br>IPS的防护方式一般以阻断受保护源和外界的联系为主，这样带来的一个弊端就是，网络资源被保护了，但是同时该网络资源的对外提供的服务也被阻断了或者削弱了，这就导致了一种敌我两伤的局面，而有些服务一旦停止，对运营者来说将是一笔不小的损失。</p>
+<p>类型：<br>可以分为基于特征的IPS、基于异常的IPS、基于策略的IPS、基于协议分析的IPS。</p>
+<ol>
+<li>基于特征的IPS是许多IPS解决方案中最常用的方法。把特征添加到设备中，可识别当前最常见的攻击。也被称为模式匹配IPS。特征库可以添加、调整和更新，以应对新的攻击。</li>
+<li>基于异常的IPS也被称为基于行规的IPS。基于异常的方法可以用统计异常检测和非统计异常检测。</li>
+<li>基于策略的IPS更关心的是是否执行组织的安保策略。如果检测的活动违反了组织的安保策略就触发报警。使用这种方法的IPS，要把安全策略写入设备之中。</li>
+<li>基于协议分析的IPS与基于特征的方法类似。大多数情况检查常见的特征，但基于协议分析的方法可以做更深入的数据包检查，能更灵活地发现某些类型的攻击。</li>
+</ol>
+<h2 id="Snort"><a href="#Snort" class="headerlink" title="Snort"></a>Snort</h2><p>开源入侵预防系统<br><a target="_blank" rel="noopener" href="https://snort.org/">snort.org/</a><br>Snort is the foremost Open Source Intrusion Prevention System (IPS) in the world. Snort IPS uses a series of rules that help define malicious network activity and uses those rules to find packets that match against them and generates alerts for users.</p>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://c4pr1c3.github.io/cuc-ns/chap0x09/exp.html">Snort 实验</a><br><a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/243790.html">基于Kali的Snort配置和入侵检测测试</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37865996/article/details/85088090">snort的安装、配置和使用</a><br><a target="_blank" rel="noopener" href="http://www.qfrost.com/undefined/snort/">Snort联动式入侵防御系统的折腾之路（1）：Snort&amp;Guardian安装与部署</a></p>
+<h2 id="suricata"><a href="#suricata" class="headerlink" title="suricata"></a>suricata</h2><p>开源威胁检测引擎，入侵检测、入侵防御等<br><a target="_blank" rel="noopener" href="https://suricata.io/">suricata.io</a><br>Suricata is the leading independent open source threat detection engine. By combining intrusion detection (IDS), intrusion prevention (IPS), network security monitoring (NSM) and PCAP processing, Suricata can quickly identify, stop, and assess even the most sophisticated attacks.</p>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://www.osgeo.cn/suricata/what-is-suricata.html">Suricata 快速入门指南</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/linagcheng/p/12559922.html">Suricata </a></p>
+<p>产品比较：<br><a target="_blank" rel="noopener" href="https://www.iculture.cc/cybersecurity/pig=5629">Suricata/Snort 开源IDS/IPS入侵检测、防御引擎哪家强？</a></p>
+<p>源码分析：<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1340331871608311808">网络入侵检测防御系统源码分析 专栏系列</a></p>
+<h1 id="网络安全审计系统"><a href="#网络安全审计系统" class="headerlink" title="网络安全审计系统"></a>网络安全审计系统</h1><p>这里的审计指流量审计等，其它审计还有日志审计、代码审计、数据库审计等<br>网络安全审计系统针对互联网行为提供有效的行为审计、内容审计、行为报警、行为控制及相关审计功能。从管理层面提供互联网的有效监督，预防、制止数据泄密。满足用户对互联网行为审计备案及安全保护措施的要求，提供完整的上网记录，便于信息追踪、系统安全管理和风险防范。</p>
+<h1 id="堡垒机"><a href="#堡垒机" class="headerlink" title="堡垒机"></a>堡垒机</h1><p>为了保障网络和数据不受来自外部和内部用户的入侵和破坏，运用各种技术手段监控和记录运维人员对网络内的服务器、网络设备、安全设备、数据库等设备的操作行为，以便集中报警、及时处理及审计定责。堡垒机是从跳板机（也叫前置机）的概念演变过来的。早在2000年左右的时候，一些中大型企业为了能对运维人员的远程登录进行集中管理，会在机房部署一台跳板机。跳板机其实就是一台服务器。所有运维人员都需要先远程登录跳板机，然后从跳板机登录其他服务器中进行运维操作。</p>
+<p>自动化操作：有效提高运维效率的关键，可以让堡垒机自动帮助运维人员执行大量、重复的常规操作，提高运维效率。</p>
+<p>操作审计：解决操作事故责任认定的问题，确保事故发生后，能快速定位操作者和事故原因，还原事故现场和举证。</p>
+<p>访问控制：解决操作者合法访问操作资源的问题，通过对访问资源的严格控制，确保操作者在其账号有效权限和期限内合法访问操作资源，降低操作风险。</p>
+<p>身份管理：解决操作者身份唯一的问题，身份唯一性的确定，是操作行为管理的基础，将确保操作管理的各项内容成为有根之本。</p>
+<p>集中管理：解决操作分散、无序的问题，管理的模式决定了管理的有效性，对操作进行集中统一的管理，是解决运维操作管理诸多问题的前提与基础。</p>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/75811242">堡垒机、运维堡垒机、开源堡垒机、云堡垒机全面解析</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38265137/article/details/106758229">堡垒机(运维审计系统)的基本原理与部署方式</a></p>
+<h2 id="Jumpserver"><a href="#Jumpserver" class="headerlink" title="Jumpserver"></a>Jumpserver</h2><p>开源堡垒机/跳板机，使用 Python, Django 开发<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/you-men/p/13939724.html">Jumpserver简介,部署及使用</a></p>
+<h1 id="SOC（Security-Operations-Center，安全运营中心）"><a href="#SOC（Security-Operations-Center，安全运营中心）" class="headerlink" title="SOC（Security Operations Center，安全运营中心）"></a>SOC（Security Operations Center，安全运营中心）</h1><p>作用：（不是一个防护产品，而是一个防护系统）<br>SOC，全称是Security Operations Center，是一个以IT资产为基础，以业务信息系统为核心，以客户体验为指引，从监控、审计、风险和运维四个维度建立起来的一套可度量的统一业务支撑平台，使得各种用户能够对业务信息系统进行可用性与性能的监控、配置与事件的分析审计预警、风险与态势的度量与评估、安全运维流程的标准化、例行化和常态化，最终实现业务信息系统的持续安全运营<br>特点：<br>既有产品又有服务，需要运营，流程以及人工的有机结合，是一个综合的技术支持平台。他将安全看成一个动态的过程（敌人的攻击手段在变，漏洞在更新，我方的防火手段，业务产品，人员调度等都在变动，没有一个系统可以一劳永逸的抵御所有攻击，只有“魔”，“道”维持一个相对的平衡才是安全）态势感知的根基就是安全运营中心<br>态势感知：<br>态势感知是一种基于环境的、动态、整体地洞悉安全风险的能力，是以安全大数据为基础，从全局视角提升对安全威胁的发现识别、理解分析、响应处置能力的一种方式，最终是为了决策与行动，是安全能力的落地。</p>
+<p>态势感知特点：（大数据成为态势感知的主要驱动力，足够的数据分析）<br>检测：提供网络安全持续监控能力，及时发现各种攻击威胁与异常，特别是针对性攻击。<br>分析、响应：建立威胁可视化及分析能力，对威胁的影响范围、攻击路径、目的、手段进行快速研判，目的是有效的安全决策和响应。<br>预测、预防：建立风险通报和威胁预警机制，全面掌握攻击者目的、技战术、攻击工具等信息。<br>防御：利用掌握的攻击者相关目的、技战术、攻击工具等情报，完善防御体系。</p>
+<p>信息安全与事件管理<br>SIEM=SEM+SIM<br>SEM（安全事件管理）<br>SIM（安全信息管理）<br>SIEM软件能给企业安全人员提供其IT环境中所发生活动的洞见和轨迹记录<br>SIEM技术最早是从日志管理发展起来的。它将安全事件管理(SEM)——实时分析日志和事件数据以提供威胁监视、事件关联和事件响应，与安全信息管理(SIM)——收集、分析并报告日志数据，结合了起来。（从各种安全设备，主机日志等收集数据，然后分析这些数据）<br>SIEM目前被视为是SOC安全运营中心的基础（大数据—SIEM审计分析—驱动安全运营中心）<br>缺点：<br>对数据的检测并非完全准确，存在大量的误报，需要高质量的大量数据支持</p>
+<h1 id="UTM（Unified-Threat-Management，-统一威胁管理）"><a href="#UTM（Unified-Threat-Management，-统一威胁管理）" class="headerlink" title="UTM（Unified Threat Management， 统一威胁管理）"></a>UTM（Unified Threat Management， 统一威胁管理）</h1><p>定义：<br>统一威胁管理（UTM，Unified Threat Management），顾名思义，就是在单个硬件或软件上，提供多种安全功能。这跟传统的安全设备不同，传统的安全设备一般只解决一种问题。<br>包含的功能：（待完善）<br>1）网络防火墙（Network Firewall）<br>2）入侵检测（Intrusion Detection）<br>3）入侵预防（Intrusion Prevention）<br>优势：<br>1） 统一的威胁管理，可以集中做安全防护，不需要拥有很多单一的安全设备，不需要每种设备都去考虑<br>2） 大大简化了安装，配置和维护的成本<br>3） 节省了网络资源的同时也节省了人力物力财力时间<br>缺点：<br>1） 单点故障问题：UTM设备一旦失效，整个网络或者系统的防护清零<br>2） 违背了纵深防御原则，对外防御有奇效，但是对内没有太大用武之地</p>
+<h1 id="DDOS防护"><a href="#DDOS防护" class="headerlink" title="DDOS防护"></a>DDOS防护</h1><p>DOS拒绝服务攻击<br>DDOS分布式拒绝服务攻击：消耗带宽，消耗资源<br>通过大量的合法请求消耗或者占用目标的网络资源，使之不能正常工作或者瘫痪<br>防护手段：<br>1） 入侵检测<br>2） 流量过滤<br>3） 多重验证<br>常见：<br>1）扩大带宽<br>2）流量清洗或者封ip<br>CDN：<br>CDN的全称是Content Delivery Network，即内容分发网络。CDN是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN的关键技术主要有内容存储和分发技术。</p>
+<h1 id="VPN（Virtual-Private-Network，虚拟专用网络）"><a href="#VPN（Virtual-Private-Network，虚拟专用网络）" class="headerlink" title="VPN（Virtual Private Network，虚拟专用网络）"></a>VPN（Virtual Private Network，虚拟专用网络）</h1><p>VPN 虚拟专用网络指的是在公用网络上建立专用网络的技术。之所以称为虚拟网主要是因为整个VPN网络的任意两个节点之间的连接并没有传统专网所需的端到端的物理链路，而是架构在公用网络服务商所提供的网络平台之上的逻辑网络，用户数据在逻辑链路中传输。常用于连接中、大型企业或团体与团体间的私人网络的通讯方法，采用加密手段实现消息的安全传输。</p>
+<ul>
+<li><p>SSL VPN：是以HTTPS（SecureHTTP，安全的HTTP，即支持SSL的HTTP协议）为基础的VPN技术，工作在传输层和应用层之间。SSL VPN充分利用了SSL协议提供的基于证书的身份认证、数据加密和消息完整性验证机制，可以为应用层之间的通信建立安全连接。SSL VPN广泛应用于基于Web的远程安全接入，为用户远程访问公司内部网络提供了安全保证。</p>
+</li>
+<li><p>IPSecVPN是基于IPSec协议的VPN技术，由IPSec协议提供隧道安全保障。IPSec是一种由IETF设计的端到端的确保基于IP通讯的数据安全性的机制。它为Internet上传输的数据提供了高质量的、可互操作的、基于密码学的安全保证。</p>
+</li>
+<li><p>MPLS VPN：是一种基于MPLS技术的IP VPN，是在网络路由和交换设备上应用MPLS（多协议标记交换）技术，简化核心路由器的路由选择方式，利用结合传统路由技术的标记交换实现的IP虚拟专用网络（IP VPN）。MPLS优势在于将二层交换和三层路由技术结合起来，在解决VPN、服务分类和流量工程这些IP网络的重大问题时具有很优异的表现。因此，MPLS VPN在解决企业互连、提供各种新业务方面也越来越被运营商看好，成为在IP网络运营商提供增值业务的重要手段。MPLS VPN又可分为二层MPLS VPN（即MPLS L2 VPN）和三层MPLS VPN（即MPLS L3 VPN）。</p>
+</li>
+</ul>
+<h1 id="蜜罐"><a href="#蜜罐" class="headerlink" title="蜜罐"></a>蜜罐</h1><p>通过模拟一个或多个易受攻击的主机或服务来吸引攻击者，捕获攻击流量与样本，发现网络威胁、提取威胁特征。为更好的吸引攻击者，蜜罐需要提供强悍的攻击诱骗能力。</p>
+<p>系统主要包括三部分：<br>交互仿真(面向攻击者)：通过仿真，诱导攻击。<br>数据捕获(面向管理者)：捕获攻击者信息和攻击代码等。<br>安全防护(面向管理者)：防止攻击者攻陷蜜罐系统，或突破蜜罐与真实系统的隔离，将蜜罐当作进一步入侵的踏板。</p>
+<p>依据蜜罐诱骗能力或交互能力的高低，蜜罐可分为低交互蜜罐与高交互蜜罐（在国内研究中也有低、中、高三类交互能力的分法）：<br>低交互蜜罐：主要通过模拟一些服务，为攻击者提供简单的交互，低交互蜜罐配置简单，可以较容易的完成部署，但是受限于交互能力，无法捕获高价值的攻击。<br>高交互蜜罐：模拟了整个系统与服务，它们大多是真实的系统或设备，有助于发现服务存在的新漏洞，同时能够记录所有的攻击，但是，部署困难、维护成本高，一旦服务上存在的漏洞被利用，容易引发新的安全问题，而且存在配置难、难以部署的问题。<br>粘性蜜罐(Tarpits)：这种类型的蜜罐，使用新的IP来生成新的虚拟机，模拟存在服务的漏洞，来做诱饵。因此攻击者会花费长时间来攻击，就有足够的时间来处理攻击，同时锁定攻击者。</p>
+<p>蜜罐的类型</p>
+<ul>
+<li>垃圾邮件蜜罐<br>将伪造的电子邮件地址放置在隐藏位置，只有自动地址收集器才能找到它。由于该地址除了是垃圾邮件陷阱外，没有任何其他用途，因此可以100%确定发送到该地址的任何邮件都是垃圾邮件。所有与发送到垃圾邮件陷阱的邮件内容相同的邮件都可以被自动阻止，并且发件人的源 IP 可以添加到黑名单中。</li>
+<li>SQL注入蜜罐<br>可以设置一个诱饵数据库来监控软件漏洞，并发现利用不安全的系统架构或使用 SQL 注入、SQL 服务漏洞或滥用权限的攻击。</li>
+<li>恶意软件蜜罐<br>恶意软件蜜罐模仿软件应用程序和 API 来引诱恶意软件攻击。然后可以通过分析恶意软件的特征，来开发反恶意软件或封堵 API 中的漏洞。</li>
+<li>爬虫蜜罐<br>旨在通过创建只有网络爬虫才能访问的网页和链接来诱捕网络爬虫。检测网络爬虫可以帮助您了解如何阻止恶意机器人以及广告网络爬虫程序。</li>
+</ul>
+<p>蜜罐的一些实现参考：<a target="_blank" rel="noopener" href="https://blue.y1ng.org/0x7_honeypots/">蜜罐列表</a></p>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://c4pr1c3.github.io/cuc-ns/chap0x11/exp.html">常见蜜罐体验和探索</a><br><a target="_blank" rel="noopener" href="https://www.kaspersky.com.cn/resource-center/threats/what-is-a-honeypot">什么是蜜罐？</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/security/" rel="tag"># security</a>
+              <a href="/tags/security-devices/" rel="tag"># security devices</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/21/2021-11-21/" rel="prev" title="机器学习与数据挖掘初探">
+      <i class="fa fa-chevron-left"></i> 机器学习与数据挖掘初探
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">2.</span> <span class="nav-text">防火墙</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WAF%EF%BC%88Web-Application-Firewall%EF%BC%8CWeb%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">WAF（Web Application Firewall，Web应用防火墙）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDS-Intrusion-Detection-System%EF%BC%8C%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">IDS ( Intrusion Detection System，入侵检测系统)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IPS-Intrusion-Prevention-System%EF%BC%8C%E5%85%A5%E4%BE%B5%E9%A2%84%E9%98%B2%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.</span> <span class="nav-text">IPS ( Intrusion Prevention System，入侵预防系统)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Snort"><span class="nav-number">4.1.</span> <span class="nav-text">Snort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#suricata"><span class="nav-number">4.2.</span> <span class="nav-text">suricata</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1%E7%B3%BB%E7%BB%9F"><span class="nav-number">5.</span> <span class="nav-text">网络安全审计系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A0%A1%E5%9E%92%E6%9C%BA"><span class="nav-number">6.</span> <span class="nav-text">堡垒机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jumpserver"><span class="nav-number">6.1.</span> <span class="nav-text">Jumpserver</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SOC%EF%BC%88Security-Operations-Center%EF%BC%8C%E5%AE%89%E5%85%A8%E8%BF%90%E8%90%A5%E4%B8%AD%E5%BF%83%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">SOC（Security Operations Center，安全运营中心）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UTM%EF%BC%88Unified-Threat-Management%EF%BC%8C-%E7%BB%9F%E4%B8%80%E5%A8%81%E8%83%81%E7%AE%A1%E7%90%86%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">UTM（Unified Threat Management， 统一威胁管理）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDOS%E9%98%B2%E6%8A%A4"><span class="nav-number">9.</span> <span class="nav-text">DDOS防护</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VPN%EF%BC%88Virtual-Private-Network%EF%BC%8C%E8%99%9A%E6%8B%9F%E4%B8%93%E7%94%A8%E7%BD%91%E7%BB%9C%EF%BC%89"><span class="nav-number">10.</span> <span class="nav-text">VPN（Virtual Private Network，虚拟专用网络）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%9C%9C%E7%BD%90"><span class="nav-number">11.</span> <span class="nav-text">蜜罐</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Kevin Cai</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+      <!-- music player -->
+      <div>
+      <iframe id="music_iframe"
+ 	frameborder="no" border="0" 
+	 marginwidth="0" marginheight="0" 
+	 src="https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C">
+      </iframe>
+	
+	<input type="button" onclick="javascript:refreshFrame();" value="next" />
+      </div>
+ 
+	<script type="text/javascript">
+	   function refreshFrame(){
+	     document.getElementById('music_iframe').src="https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C";
+	}
+	</script>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">[object Object]</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
